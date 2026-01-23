@@ -1,5 +1,5 @@
-\documentclass[12pt]{article}
-\usepackage[letterpaper, margin=0.55in, top=0.85in]{geometry}
+\documentclass[11pt]{article}
+\usepackage[letterpaper, margin=0.4in, top=0.6in, bottom=0.35in]{geometry}
 \usepackage{fancyhdr}
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
@@ -8,377 +8,211 @@
 \usepackage{array}
 \usepackage{xcolor}
 \usepackage{enumitem}
+\usepackage{tabularx}
 
 \renewcommand{\familydefault}{\sfdefault}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0pt}
-\setlist[itemize]{nosep,leftmargin=*,label=\textbullet}
-\setlength{\multicolsep}{0pt}
+\setlist[enumerate]{nosep,leftmargin=1.3em,itemsep=1pt}
+\setlength{\multicolsep}{2pt}
+\setlength{\columnsep}{0.15in}
 \raggedcolumns
 
-\definecolor{Accent}{HTML}{2B6CB0}
-\definecolor{SoftGray}{HTML}{F3F4F6}
-\definecolor{RuleGray}{HTML}{D1D5DB}
-\newlength{\ColGap}
-\setlength{\ColGap}{10pt}
+% Colors
+\definecolor{P}{HTML}{1E40AF}
+\definecolor{L}{HTML}{EFF6FF}
+\definecolor{G}{HTML}{6B7280}
 
+% Row height
+\newlength{\R}\setlength{\R}{0.22in}
+
+% Header
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[L]{\textbf{Grade 2}}
-\fancyhead[C]{\textbf{Word Test: Long E}}
-\fancyhead[R]{\textbf{ee / ea / e-e}}
+\fancyhead[L]{\textbf{Grade 2 - Word Test}}
+\fancyhead[C]{\textbf{Long E: ee / ea / e-e}}
+\fancyhead[R]{\textbf{Name:}\rule{1.3in}{0.4pt}}
 \renewcommand{\headrulewidth}{0.4pt}
-\setlength{\headheight}{15pt}
-\setlength{\headsep}{0.45in}
+\setlength{\headheight}{13pt}
+\setlength{\headsep}{0.2in}
 
-\newcommand{\Field}[2]{\textbf{#1}\ \rule{#2}{0.45pt}}
-
-\newcommand{\Section}[1]{%
-  \par\addvspace{\baselineskip}%
-  \noindent\colorbox{SoftGray}{%
-    \parbox{\dimexpr\linewidth-2\fboxsep\relax}{\textcolor{Accent}{\textbf{#1}}}%
-  }\par%
-}
-
-\newcommand{\WriteRow}[1]{\textbf{#1} & \rule{\hsize}{0.45pt}\\[0.18in]}
-\newcommand{\BlankWriteRow}{\textbf{} & \rule{\hsize}{0.45pt}\\[0.18in]}
-
-\newcommand{\WriteTable}[1]{%
-  \setlength{\tabcolsep}{0pt}%
-  \renewcommand{\arraystretch}{1.05}%
-  \begin{tabular}{@{}p{1.15in}@{\hspace{\ColGap}}p{\dimexpr\columnwidth-1.15in-\ColGap\relax}@{}}
-    #1
-  \end{tabular}%
-}
-
-\newcommand{\TestRow}[1]{\textbf{#1.} & \rule{\hsize}{0.45pt}\\[0.18in]}
-\newcommand{\TestTable}[1]{%
-  \setlength{\tabcolsep}{0pt}%
-  \renewcommand{\arraystretch}{1.05}%
-  \begin{tabular}{@{}p{0.42in}@{\hspace{\ColGap}}p{\dimexpr\columnwidth-0.42in-\ColGap\relax}@{}}
-    #1
-  \end{tabular}%
-}
-
-\newcommand{\SmallNote}[1]{\textcolor{Accent}{\textbf{#1}}\par}
-\newcommand{\AllWords}{been, seed, sheep, sweet, cheese, bean, steam, stream, seat, meat, please, these, complete}
-\newcommand{\WordBankLine}{%
-  \begingroup\small\noindent\parbox{\linewidth}{\textbf{Words:} \AllWords}\par\endgroup%
-}
-\newcommand{\ShortLine}[1]{\rule{#1}{0.45pt}}
-\newcommand{\FillLine}{\rule{\hsize}{0.45pt}}
-\newcommand{\PairRow}[2]{\textbf{#1} & #2\\[0.12in]}
-\newcommand{\PairTable}[2]{%
-  \setlength{\tabcolsep}{0pt}%
-  \renewcommand{\arraystretch}{1.0}%
-  \begin{tabular}{@{}p{1.35in}@{\hspace{\ColGap}}p{\dimexpr\columnwidth-1.35in-\ColGap\relax}@{}}
-    #1
-  \end{tabular}%
-  \vspace{#2}%
-}
-
-\newlength{\BoxGap}
-\setlength{\BoxGap}{0.03in}
-\newcommand{\LetterBox}{\fbox{\rule{0pt}{0.20in}\rule{0.18in}{0pt}}}
-\newcommand{\BoxesFour}[1]{%
-  \textbf{#1}\hspace{0.12in}%
-  \LetterBox\hspace{\BoxGap}\LetterBox\hspace{\BoxGap}\LetterBox\hspace{\BoxGap}\LetterBox%
-  \par\vspace{0.08in}%
-}
-\newcommand{\BoxesFive}[1]{%
-  \textbf{#1}\hspace{0.12in}%
-  \LetterBox\hspace{\BoxGap}\LetterBox\hspace{\BoxGap}\LetterBox\hspace{\BoxGap}\LetterBox\hspace{\BoxGap}\LetterBox%
-  \par\vspace{0.08in}%
-}
-\newcommand{\BoxesSix}[1]{%
-  \textbf{#1}\hspace{0.12in}%
-  \LetterBox\hspace{\BoxGap}\LetterBox\hspace{\BoxGap}\LetterBox\hspace{\BoxGap}\LetterBox\hspace{\BoxGap}\LetterBox\hspace{\BoxGap}\LetterBox%
-  \par\vspace{0.08in}%
-}
-\newcommand{\BoxesEight}[1]{%
-  \textbf{#1}\hspace{0.12in}%
-  \LetterBox\hspace{\BoxGap}\LetterBox\hspace{\BoxGap}\LetterBox\hspace{\BoxGap}\LetterBox\hspace{\BoxGap}\LetterBox\hspace{\BoxGap}\LetterBox\hspace{\BoxGap}\LetterBox\hspace{\BoxGap}\LetterBox%
-  \par\vspace{0.08in}%
-}
-\newcommand{\PicBox}{\fbox{\rule{0pt}{0.28in}\rule{0.55in}{0pt}}}
+% Commands
+\newcommand{\Sec}[1]{\vspace{0.06in}\noindent\colorbox{L}{\parbox{\dimexpr\linewidth-2\fboxsep}{\textcolor{P}{\textbf{#1}}}}\par\vspace{0.04in}}
+\newcommand{\N}[1]{\textcolor{G}{\footnotesize #1}\par\vspace{0.02in}}
+\newcommand{\Li}[1]{\rule{#1}{0.4pt}}
+\newcommand{\W}[1]{\textbf{#1} & \Li{\linewidth}\\[\R]}
+\newcommand{\Num}[1]{\textbf{#1.} & \Li{\linewidth}\\[\R]}
+\newcommand{\WT}[1]{\renewcommand{\arraystretch}{0.8}\begin{tabular}{@{}p{0.85in}p{\dimexpr\linewidth-0.9in}@{}}#1\end{tabular}}
+\newcommand{\NT}[1]{\renewcommand{\arraystretch}{0.8}\begin{tabular}{@{}p{0.3in}p{\dimexpr\linewidth-0.35in}@{}}#1\end{tabular}}
+\newcommand{\B}{\,\fbox{\rule{0pt}{0.13in}\rule{0.12in}{0pt}}\,}
+\newcommand{\BX}[2]{\textbf{#1} #2\par\vspace{0.03in}}
+\newcommand{\Words}{been, seed, sheep, sweet, cheese, bean, steam, stream, seat, meat, please, these, complete}
 
 \begin{document}
 
-\Field{Name:}{3.55in}\hfill \Field{Date:}{1.65in}
-
-\Section{Word Bank (Practice)}
-
+% ==================== PAGE 1 ====================
+\Sec{Word Bank}
 \begin{multicols}{3}
-\textcolor{Accent}{\textbf{EE (ee)}}\par\vspace{0.06in}
-\textbf{been}\par\vspace{0.05in}
-\textbf{seed}\par\vspace{0.05in}
-\textbf{sheep}\par\vspace{0.05in}
-\textbf{sweet}\par\vspace{0.05in}
-\textbf{cheese}\par
-
+\textcolor{P}{\textbf{EE}} been, seed, sheep, sweet, cheese
 \columnbreak
-\textcolor{Accent}{\textbf{EA (ea)}}\par\vspace{0.06in}
-\textbf{bean}\par\vspace{0.05in}
-\textbf{steam}\par\vspace{0.05in}
-\textbf{stream}\par\vspace{0.05in}
-\textbf{seat}\par\vspace{0.05in}
-\textbf{meat}\par
-
+\textcolor{P}{\textbf{EA}} bean, steam, stream, seat, meat
 \columnbreak
-\textcolor{Accent}{\textbf{E-E (magic e)}}\par\vspace{0.06in}
-\textbf{these}\par\vspace{0.05in}
-\textbf{complete}\par\vspace{0.05in}
-\textbf{please}\par
+\textcolor{P}{\textbf{E-E}} please, these, complete
 \end{multicols}
 
-\Section{Write each word once (use the word bank)}
-
+\vspace{-0.05in}
+\Sec{Write Each Word}
 \begin{multicols}{2}
-\WriteTable{
-  \WriteRow{been}
-  \WriteRow{seed}
-  \WriteRow{sheep}
-  \WriteRow{sweet}
-  \WriteRow{cheese}
-  \WriteRow{bean}
-  \WriteRow{steam}
-}
+\WT{\W{1. been}\W{2. seed}\W{3. sheep}\W{4. sweet}\W{5. cheese}\W{6. bean}\W{7. steam}}
 \columnbreak
-\WriteTable{
-  \WriteRow{stream}
-  \WriteRow{seat}
-  \WriteRow{meat}
-  \WriteRow{please}
-  \WriteRow{these}
-  \WriteRow{complete}
-  \BlankWriteRow
-}
+\WT{\W{8. stream}\W{9. seat}\W{10. meat}\W{11. please}\W{12. these}\W{13. complete}}
 \end{multicols}
 
-\Section{Traditional Dictation}
-\SmallNote{Write the word your teacher says.}
+\Sec{Dictation}\N{Write the word your teacher says.}
 \begin{multicols}{2}
-\TestTable{
-  \TestRow{1}
-  \TestRow{2}
-  \TestRow{3}
-  \TestRow{4}
-  \TestRow{5}
-  \TestRow{6}
-  \TestRow{7}
-}
+\NT{\Num{1}\Num{2}\Num{3}\Num{4}\Num{5}\Num{6}\Num{7}}
 \columnbreak
-\TestTable{
-  \TestRow{8}
-  \TestRow{9}
-  \TestRow{10}
-  \TestRow{11}
-  \TestRow{12}
-  \TestRow{13}
-}
+\NT{\Num{8}\Num{9}\Num{10}\Num{11}\Num{12}\Num{13}}
 \end{multicols}
-\begingroup\small\textcolor{RuleGray}{Teacher word list (say in order): \AllWords}\par\endgroup
+\textcolor{G}{\scriptsize Teacher: \Words}
 
-\Section{Missing Letters}
-\SmallNote{Fill in the missing letters.}
+\Sec{Missing Letters}\N{Fill in ee, ea, or e-e.}
 \begin{multicols}{2}
-\WriteTable{
-  \WriteRow{b\_\_n (ee)}
-  \WriteRow{s\_\_d}
-  \WriteRow{sh\_\_p}
-  \WriteRow{sw\_\_t}
-  \WriteRow{ch\_\_se}
-  \WriteRow{b\_\_n (ea)}
-  \WriteRow{st\_\_m}
-}
+\WT{\W{b\_\_n (been)}\W{s\_\_d}\W{sh\_\_p}\W{sw\_\_t}\W{ch\_\_se}\W{b\_\_n (bean)}\W{st\_\_m}}
 \columnbreak
-\WriteTable{
-  \WriteRow{str\_\_m}
-  \WriteRow{s\_\_t}
-  \WriteRow{m\_\_t}
-  \WriteRow{pl\_\_se}
-  \WriteRow{th\_\_se}
-  \WriteRow{compl\_\_te}
-}
+\WT{\W{str\_\_m}\W{s\_\_t}\W{m\_\_t}\W{pl\_\_se}\W{th\_\_se}\W{compl\_\_te}}
 \end{multicols}
 
-\Section{Jumbled Letters}
-\SmallNote{Unscramble the letters.}
+\newpage
+% ==================== PAGE 2 ====================
+\Sec{Jumbled Letters}\N{Unscramble the letters.}
 \begin{multicols}{2}
-\WriteTable{
-  \WriteRow{eebn}
-  \WriteRow{edes}
-  \WriteRow{peesh}
-  \WriteRow{teews}
-  \WriteRow{eseech}
-  \WriteRow{aneb}
-  \WriteRow{amste}
-}
+\WT{\W{e e b n}\W{e d e s}\W{e p e s h}\W{e t e w s}\W{e s e e c h}\W{a n e b}\W{a m s t e}}
 \columnbreak
-\WriteTable{
-  \WriteRow{mersta}
-  \WriteRow{taes}
-  \WriteRow{mtae}
-  \WriteRow{eslape}
-  \WriteRow{eesth}
-  \WriteRow{eclteomp}
-}
+\WT{\W{m e r s t a}\W{a t e s}\W{a m t e}\W{e s l a p e}\W{e e s t h}\W{e t e l p m o c}}
 \end{multicols}
 
-\Section{Match to Picture}
-\SmallNote{Draw a line from the word to the picture (or draw the picture).}
+\Sec{Sentence Completion}\N{Fill in the blank.}
+\footnotesize
+\renewcommand{\arraystretch}{1.0}
+\begin{tabular}{@{}r@{\,}p{6.6in}@{}}
+1. & I have \Li{1in} to the park.\\[0.1in]
+2. & I planted a \Li{1in} in the garden.\\[0.1in]
+3. & The \Li{1in} says "baa".\\[0.1in]
+4. & This candy is very \Li{1in}.\\[0.1in]
+5. & I like \Li{1in} on pizza.\\[0.1in]
+6. & I ate a green \Li{1in}.\\[0.1in]
+7. & Hot \Li{1in} rose from the pot.\\[0.1in]
+8. & We crossed the \Li{1in}.\\[0.1in]
+9. & Sit on the \Li{1in}.\\[0.1in]
+10. & The dog ate the \Li{1in}.\\[0.1in]
+11. & \Li{1in} pass the salt.\\[0.1in]
+12. & \Li{1in} are my books.\\[0.1in]
+13. & I will \Li{1in} my work.\\[0.1in]
+\end{tabular}
+\normalsize
+
+\Sec{Error Correction}\N{Write the correct word.}
+\footnotesize
 \begin{multicols}{2}
-\PairTable{
-  \PairRow{been}{\PicBox}
-  \PairRow{seed}{\PicBox}
-  \PairRow{sheep}{\PicBox}
-  \PairRow{sweet}{\PicBox}
-  \PairRow{cheese}{\PicBox}
-  \PairRow{bean}{\PicBox}
-  \PairRow{steam}{\PicBox}
-}{0pt}
+\renewcommand{\arraystretch}{1.0}
+\begin{tabular}{@{}p{1.6in}p{0.9in}@{}}
+I have \textbf{ben} to the zoo. & \Li{0.85in}\\[0.08in]
+I planted a \textbf{seede}. & \Li{0.85in}\\[0.08in]
+The \textbf{shep} is fluffy. & \Li{0.85in}\\[0.08in]
+This cake is \textbf{swet}. & \Li{0.85in}\\[0.08in]
+I like \textbf{chese}. & \Li{0.85in}\\[0.08in]
+I ate a \textbf{beean}. & \Li{0.85in}\\[0.08in]
+Hot \textbf{steem} rose. & \Li{0.85in}\\[0.08in]
+\end{tabular}
 \columnbreak
-\PairTable{
-  \PairRow{stream}{\PicBox}
-  \PairRow{seat}{\PicBox}
-  \PairRow{meat}{\PicBox}
-  \PairRow{please}{\PicBox}
-  \PairRow{these}{\PicBox}
-  \PairRow{complete}{\PicBox}
-}{0pt}
+\begin{tabular}{@{}p{1.6in}p{0.9in}@{}}
+We crossed a \textbf{strem}. & \Li{0.85in}\\[0.08in]
+Sit on the \textbf{seet}. & \Li{0.85in}\\[0.08in]
+Dog ate the \textbf{meet}. & \Li{0.85in}\\[0.08in]
+\textbf{Plase} help me. & \Li{0.85in}\\[0.08in]
+\textbf{Thees} are toys. & \Li{0.85in}\\[0.08in]
+I will \textbf{complet} it. & \Li{0.85in}\\[0.08in]
+\end{tabular}
 \end{multicols}
+\normalsize
 
-\Section{Sentence Completion}
-\SmallNote{Fill in each blank with a word from the word bank.}
+\newpage
+% ==================== PAGE 3 ====================
+\Sec{Multiple Choice}\N{Circle the correct spelling.}
+\footnotesize
 \begin{multicols}{2}
-\PairTable{
-  \PairRow{1}{I have \ShortLine{1.4in}\ \ \textbf{to the park.}}
-  \PairRow{2}{I planted a \ShortLine{1.6in}\ \ \textbf{.}}
-  \PairRow{3}{The \ShortLine{1.6in}\ \ \textbf{says "baa".}}
-  \PairRow{4}{The candy is \ShortLine{1.6in}\ \ \textbf{.}}
-  \PairRow{5}{I like \ShortLine{1.6in}\ \ \textbf{on pizza.}}
-  \PairRow{6}{I ate a \ShortLine{1.6in}\ \ \textbf{.}}
-  \PairRow{7}{Hot \ShortLine{1.6in}\ \ \textbf{rose up.}}
-}{0pt}
+\begin{enumerate}
+\item a) been \quad b) ben \quad c) beon
+\item a) seid \quad b) seed \quad c) sed
+\item a) sheep \quad b) shep \quad c) sheeep
+\item a) swet \quad b) sweet \quad c) sweeat
+\item a) cheeze \quad b) cheese \quad c) chese
+\item a) been \quad b) bean \quad c) bane
+\item a) steem \quad b) steam \quad c) stam
+\item a) streem \quad b) stream \quad c) strem
+\item a) set \quad b) seat \quad c) seet
+\item a) meet \quad b) mete \quad c) meat
+\item a) pleese \quad b) please \quad c) plese
+\item a) thees \quad b) these \quad c) thse
+\item a) complet \quad b) complete \quad c) complite
+\end{enumerate}
+\end{multicols}
+\normalsize
+
+\Sec{Meaning Match}\N{Write the word that matches.}
+\footnotesize
+\begin{multicols}{2}
+\renewcommand{\arraystretch}{1.05}
+\begin{tabular}{@{}p{1.8in}p{0.9in}@{}}
+I have visited a place & \Li{0.85in}\\[0.08in]
+A tiny plant starter & \Li{0.85in}\\[0.08in]
+Animal that says "baa" & \Li{0.85in}\\[0.08in]
+Tastes like sugar & \Li{0.85in}\\[0.08in]
+Made from milk & \Li{0.85in}\\[0.08in]
+A small green vegetable & \Li{0.85in}\\[0.08in]
+Hot air from water & \Li{0.85in}\\[0.08in]
+\end{tabular}
 \columnbreak
-\PairTable{
-  \PairRow{8}{We saw a \ShortLine{1.6in}\ \ \textbf{of water.}}
-  \PairRow{9}{Sit on the \ShortLine{1.6in}\ \ \textbf{.}}
-  \PairRow{10}{The dog ate the \ShortLine{1.3in}\ \ \textbf{.}}
-  \PairRow{11}{\ShortLine{1.8in}\ \ \textbf{pass the salt.}}
-  \PairRow{12}{\ShortLine{1.8in}\ \ \textbf{are my books.}}
-  \PairRow{13}{I will \ShortLine{1.6in}\ \ \textbf{my work.}}
-}{0pt}
+\begin{tabular}{@{}p{1.8in}p{0.9in}@{}}
+A small river & \Li{0.85in}\\[0.08in]
+What you sit on & \Li{0.85in}\\[0.08in]
+Food from an animal & \Li{0.85in}\\[0.08in]
+A polite word & \Li{0.85in}\\[0.08in]
+Points to things nearby & \Li{0.85in}\\[0.08in]
+To finish something & \Li{0.85in}\\[0.08in]
+\end{tabular}
 \end{multicols}
+\normalsize
 
-\Section{Multiple Choice}
-\SmallNote{Circle the correct spelling.}
-{\small
+\Sec{Word Shapes}\N{Write each word in the boxes.}
 \begin{multicols}{2}
-\begin{itemize}
-  \item been: a) been \ \ b) ben \ \ c) beon
-  \item seed: a) seid \ \ b) seed \ \ c) sed
-  \item sheep: a) sheep \ \ b) shep \ \ c) sheeep
-  \item sweet: a) swet \ \ b) sweet \ \ c) sweeat
-  \item cheese: a) cheeze \ \ b) cheese \ \ c) chese
-  \item bean: a) been \ \ b) bean \ \ c) bane
-  \item steam: a) steem \ \ b) steam \ \ c) stam
-  \item stream: a) streem \ \ b) stream \ \ c) strem
-  \item seat: a) set \ \ b) seat \ \ c) seet
-  \item meat: a) meet \ \ b) mete \ \ c) meat
-  \item please: a) pleese \ \ b) please \ \ c) plese
-  \item these: a) thees \ \ b) these \ \ c) thse
-  \item complete: a) complet \ \ b) complete \ \ c) complite
-\end{itemize}
-\end{multicols}
-}
-
-\Section{Homophone / Meaning Check}
-\SmallNote{Pick the word that matches the meaning.}
-{\small
-\begin{multicols}{2}
-\begin{itemize}
-  \item I have visited: been / bean / seat
-  \item Tiny plant starter: seed / sweet / meat
-  \item Animal that says "baa": sheep / cheese / steam
-  \item Sugar taste: sweet / seat / stream
-  \item Food from milk: cheese / these / bean
-  \item A small food like a pea: bean / been / seat
-  \item Hot air from boiling water: steam / stream / seat
-  \item Small river: stream / steam / sweet
-  \item What you sit on: seat / seed / sweet
-  \item Food from an animal: meat / meet / seat
-  \item A polite word: please / pieces / peas
-  \item This word points to things: these / those / cheese
-  \item Finish the work: complete / compete / complicate
-\end{itemize}
-\end{multicols}
-}
-
-\Section{Typing / Digital Drag-and-Drop}
-\SmallNote{Type each word using the letters.}
-\begin{multicols}{2}
-\WriteTable{
-  \WriteRow{e e b n}
-  \WriteRow{e d e s}
-  \WriteRow{p e e s h}
-  \WriteRow{t e e w s}
-  \WriteRow{e s e e c h}
-  \WriteRow{a n e b}
-  \WriteRow{a m s t e}
-}
+\BX{been}{\B\B\B\B}
+\BX{seed}{\B\B\B\B}
+\BX{sheep}{\B\B\B\B\B}
+\BX{sweet}{\B\B\B\B\B}
+\BX{cheese}{\B\B\B\B\B\B}
+\BX{bean}{\B\B\B\B}
+\BX{steam}{\B\B\B\B\B}
 \columnbreak
-\WriteTable{
-  \WriteRow{m e r s t a}
-  \WriteRow{t a e s}
-  \WriteRow{m t a e}
-  \WriteRow{e s l a p e}
-  \WriteRow{e e s t h}
-  \WriteRow{e c l t e o m p}
-}
+\BX{stream}{\B\B\B\B\B\B}
+\BX{seat}{\B\B\B\B}
+\BX{meat}{\B\B\B\B}
+\BX{please}{\B\B\B\B\B\B}
+\BX{these}{\B\B\B\B\B}
+\BX{complete}{\B\B\B\B\B\B\B\B}
 \end{multicols}
 
-\Section{Error Correction}
-\SmallNote{Find and correct the spelling mistake.}
-\begin{multicols}{2}
-\PairTable{
-  \PairRow{I have ben to the park.}{\FillLine}
-  \PairRow{I planted a seede.}{\FillLine}
-  \PairRow{The shep is fluffy.}{\FillLine}
-  \PairRow{This candy is swet.}{\FillLine}
-  \PairRow{I like chese on pizza.}{\FillLine}
-  \PairRow{I ate a beean.}{\FillLine}
-  \PairRow{Hot steem rose up.}{\FillLine}
-}{0pt}
+\Sec{Draw and Label}\N{Pick 4 words: sheep, cheese, bean, seat, meat, seed.}
+\begin{multicols}{4}
+\centering
+\fbox{\rule{0pt}{0.7in}\rule{0.9in}{0pt}}\par\vspace{0.03in}\Li{0.9in}
 \columnbreak
-\PairTable{
-  \PairRow{We crossed a strem.}{\FillLine}
-  \PairRow{Sit on the seet.}{\FillLine}
-  \PairRow{The dog ate the meet.}{\FillLine}
-  \PairRow{Plase pass the salt.}{\FillLine}
-  \PairRow{Thees are my books.}{\FillLine}
-  \PairRow{I will complet my work.}{\FillLine}
-}{0pt}
-\end{multicols}
-
-\Section{Word Shape / Visual Memory}
-\SmallNote{Write each word in the boxes.}
-\begin{multicols}{2}
-\BoxesFour{been}
-\BoxesFour{seed}
-\BoxesFive{sheep}
-\BoxesFive{sweet}
-\BoxesSix{cheese}
-\BoxesFour{bean}
-\BoxesFive{steam}
+\fbox{\rule{0pt}{0.7in}\rule{0.9in}{0pt}}\par\vspace{0.03in}\Li{0.9in}
 \columnbreak
-\BoxesSix{stream}
-\BoxesFour{seat}
-\BoxesFour{meat}
-\BoxesSix{please}
-\BoxesFive{these}
-\BoxesEight{complete}
+\fbox{\rule{0pt}{0.7in}\rule{0.9in}{0pt}}\par\vspace{0.03in}\Li{0.9in}
+\columnbreak
+\fbox{\rule{0pt}{0.7in}\rule{0.9in}{0pt}}\par\vspace{0.03in}\Li{0.9in}
 \end{multicols}
 
 \end{document}
-
