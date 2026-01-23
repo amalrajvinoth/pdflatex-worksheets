@@ -56,6 +56,42 @@ Harder problems for students ready for more:
 
 ---
 
+## Input Data (CSV Files)
+
+All worksheet inputs are stored in the `data/` folder:
+
+| File | Description |
+|------|-------------|
+| `data/words-long-e.csv` | Word list for long E sounds worksheet |
+| `data/math-config.csv` | Configuration for math worksheets |
+
+### words-long-e.csv columns
+
+| Column | Description |
+|--------|-------------|
+| word | The spelling word |
+| pattern | Sound pattern (ee, ea, e-e) |
+| letters | Number of letters |
+| example_sentence | Sample sentence using the word |
+| missing_letters | Word with blanks for fill-in exercises |
+| jumbled | Scrambled letters for unscramble exercises |
+| misspelling | Common misspelling for error correction |
+
+### math-config.csv columns
+
+| Column | Description |
+|--------|-------------|
+| worksheet | Which worksheet file |
+| section | Section number in the worksheet |
+| difficulty | Difficulty level name |
+| operation | Math operation (addition, subtraction, or both) |
+| num1_min/max | Range for first number |
+| num2_min/max | Range for second number |
+| result_max | Maximum result value |
+| pages | Number of pages to generate |
+
+---
+
 ## How to Build (Optional)
 
 If you want to customize or regenerate the worksheets, you need LaTeX installed.

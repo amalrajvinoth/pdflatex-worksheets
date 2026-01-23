@@ -1,0 +1,13 @@
+worksheet,section,difficulty,operation,num1_min,num1_max,num2_min,num2_max,result_max,pages
+worksheet-g2-u100,1,no_carry,addition,10,49,10,49,99,10
+worksheet-g2-u100,1,no_borrow,subtraction,20,99,10,49,99,10
+worksheet-g2-u100,2,light_carry,addition,15,59,15,49,99,10
+worksheet-g2-u100,2,light_borrow,subtraction,30,99,15,49,99,10
+worksheet-g2-u100,3,full_carry,addition,25,59,25,59,99,10
+worksheet-g2-u100,3,full_borrow,subtraction,50,99,25,59,99,10
+worksheet-g2-advanced,1,carry_under_150,addition,25,89,15,89,149,10
+worksheet-g2-advanced,1,borrow_under_150,subtraction,50,149,15,90,149,10
+worksheet-g2-advanced,2,three_digit_add,addition,45,150,20,120,199,10
+worksheet-g2-advanced,2,three_digit_sub,subtraction,100,199,25,150,199,10
+worksheet-g2-advanced,3,multi_step_add_sub,addition+subtraction,30,70,15,45,115,10
+worksheet-g2-advanced,3,multi_step_sub_add,subtraction+addition,80,130,15,40,130,10
