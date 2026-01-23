@@ -6,40 +6,44 @@ Built with LaTeX for clean, professional output.
 
 ---
 
+## Folder Structure
+
+```
+pdflatex/
+  - src/           # LaTeX source files
+  - pdf/           # Generated PDF worksheets
+  - data/          # Input data (CSV)
+  - preview/       # Preview images
+```
+
+---
+
 ## Worksheets
 
 ### 1. Word Test: Long E Sounds
 
 Practice words with **ee**, **ea**, and **e-e** (magic e) patterns.
 
-**Words covered:** been, seed, sheep, sweet, cheese, bean, steam, stream, seat, meat, please, these, complete
+**Words:** been, seed, sheep, sweet, cheese, bean, steam, stream, seat, meat, please, these, complete
 
-**Activities included:**
-- Word Bank and Writing Practice
-- Traditional Dictation
-- Missing Letters
-- Jumbled Letters (Unscramble)
-- Multiple Choice
-- Sentence Completion
-- Error Correction
-- Word Shape Boxes
+**Activities:** Word Bank, Writing Practice, Dictation, Missing Letters, Jumbled Letters, Multiple Choice, Sentence Completion, Error Correction, Word Shapes
 
-[Download PDF](worksheet-g2-wordtest-long-e.pdf)
+[Download PDF](pdf/word-test-long-e.pdf) | [Source](src/word-test-long-e.tex)
 
-![Word Test Preview](preview/worksheet-g2-wordtest-long-e.pdf.png)
+![Word Test Preview](preview/word-test-long-e.png)
 
 ---
 
 ### 2. Math: Under 100 (Addition and Subtraction)
 
-Two-digit addition and subtraction problems with three difficulty levels:
-- **No Carry/Borrow** - simple problems
-- **Light Carry/Borrow** - one carry or borrow
-- **Full Carry/Borrow** - more challenging
+Two-digit problems with three difficulty levels:
+- No Carry/Borrow - simple problems
+- Light Carry/Borrow - one carry or borrow
+- Full Carry/Borrow - more challenging
 
-[Download PDF](worksheet-g2-u100.pdf)
+[Download PDF](pdf/math-under-100.pdf) | [Source](src/math-under-100.tex)
 
-![Under 100 Preview](preview/worksheet-g2-u100.pdf.png)
+![Under 100 Preview](preview/math-under-100.png)
 
 ---
 
@@ -50,63 +54,34 @@ Harder problems for students ready for more:
 - Three-digit problems up to 200
 - Multi-step problems (e.g., 45 + 30 - 15)
 
-[Download PDF](worksheet-g2-advanced.pdf)
+[Download PDF](pdf/math-advanced.pdf) | [Source](src/math-advanced.tex)
 
-![Advanced Math Preview](preview/worksheet-g2-advanced.pdf.png)
+![Advanced Math Preview](preview/math-advanced.png)
 
 ---
 
 ## Input Data (CSV Files)
 
-All worksheet inputs are stored in the `data/` folder:
-
 | File | Description |
 |------|-------------|
-| `data/words-long-e.csv` | Word list for long E sounds worksheet |
+| `data/words-long-e.csv` | Word list for phonics worksheet |
 | `data/math-config.csv` | Configuration for math worksheets |
-
-### words-long-e.csv columns
-
-| Column | Description |
-|--------|-------------|
-| word | The spelling word |
-| pattern | Sound pattern (ee, ea, e-e) |
-| letters | Number of letters |
-| example_sentence | Sample sentence using the word |
-| missing_letters | Word with blanks for fill-in exercises |
-| jumbled | Scrambled letters for unscramble exercises |
-| misspelling | Common misspelling for error correction |
-
-### math-config.csv columns
-
-| Column | Description |
-|--------|-------------|
-| worksheet | Which worksheet file |
-| section | Section number in the worksheet |
-| difficulty | Difficulty level name |
-| operation | Math operation (addition, subtraction, or both) |
-| num1_min/max | Range for first number |
-| num2_min/max | Range for second number |
-| result_max | Maximum result value |
-| pages | Number of pages to generate |
 
 ---
 
-## How to Build (Optional)
+## How to Build
 
-If you want to customize or regenerate the worksheets, you need LaTeX installed.
+Requires LaTeX (TeX Live or MacTeX).
 
 ```bash
-# Install LaTeX (macOS)
-brew install --cask mactex
-
 # Build all worksheets
-latexmk -pdf *.tex
+cd src
+latexmk -pdf *.tex -outdir=../pdf
 
 # Build one worksheet
-latexmk -pdf worksheet-g2-wordtest-long-e.tex
+latexmk -pdf word-test-long-e.tex -outdir=../pdf
 
-# Clean up build files
+# Clean build files
 latexmk -c
 ```
 

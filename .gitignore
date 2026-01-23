@@ -12,6 +12,13 @@
 *.snm
 *.vrb
 
+# Build artifacts in src folder
+src/*.aux
+src/*.fdb_latexmk
+src/*.fls
+src/*.log
+src/*.synctex.gz
+
 # Editor backup files
 *~
 *.bak
