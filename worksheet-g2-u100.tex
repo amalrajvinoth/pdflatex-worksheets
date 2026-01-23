@@ -1,0 +1,172 @@
+\documentclass[12pt]{article}
+\usepackage[letterpaper, margin=0.5in, top=0.8in]{geometry}
+\usepackage{pgfmath}
+\usepackage{pgffor}
+\usepackage{multicol}
+\usepackage{fancyhdr}
+\usepackage[T1]{fontenc}
+\usepackage{sourcecodepro}
+
+\renewcommand{\familydefault}{\ttdefault}
+\setlength{\parindent}{0pt}
+
+% Spacing constants
+\newlength{\columnspace}
+\setlength{\columnspace}{0.4in}
+\newlength{\problemspace}
+\setlength{\problemspace}{0.55in}
+\newlength{\digitspace}
+\setlength{\digitspace}{3pt}
+\newlength{\linespace}
+\setlength{\linespace}{6pt}
+
+\setlength{\columnsep}{\columnspace}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[C]{\large\textbf{Grade 2 - Under 100}}
+\renewcommand{\headrulewidth}{0.4pt}
+\setlength{\headsep}{0.4in}
+
+\pgfmathsetseed{\number\pdfrandomseed}
+
+\newcommand{\problemnuma}{}
+\newcommand{\problemnumb}{}
+
+\newcommand{\generatenocarryfinal}{%
+  \pgfmathrandominteger{\temptensa}{1}{4}%
+  \pgfmathrandominteger{\temponesa}{0}{9}%
+  \pgfmathtruncatemacro{\maxtensb}{min(9-\temptensa,4)}%
+  \ifnum\maxtensb<1 \def\maxtensb{1}\fi%
+  \pgfmathrandominteger{\temptensb}{1}{\maxtensb}%
+  \pgfmathtruncatemacro{\maxonesb}{9-\temponesa}%
+  \pgfmathrandominteger{\temponesb}{0}{\maxonesb}%
+  \pgfmathtruncatemacro{\resulta}{\temptensa*10+\temponesa}%
+  \pgfmathtruncatemacro{\resultb}{\temptensb*10+\temponesb}%
+  \global\edef\problemnuma{\resulta}%
+  \global\edef\problemnumb{\resultb}%
+}
+
+\newcommand{\generatenoborrowfinal}{%
+  \pgfmathrandominteger{\temptensa}{2}{9}%
+  \pgfmathrandominteger{\temponesa}{0}{9}%
+  \pgfmathtruncatemacro{\maxtensb}{\temptensa-1}%
+  \ifnum\maxtensb<1 \def\maxtensb{1}\fi%
+  \pgfmathrandominteger{\temptensb}{1}{\maxtensb}%
+  \pgfmathtruncatemacro{\maxonesb}{\temponesa}%
+  \ifnum\maxonesb<1%
+    \def\temponesb{0}%
+  \else%
+    \pgfmathrandominteger{\temponesb}{0}{\maxonesb}%
+  \fi%
+  \pgfmathtruncatemacro{\resulta}{\temptensa*10+\temponesa}%
+  \pgfmathtruncatemacro{\resultb}{\temptensb*10+\temponesb}%
+  \global\edef\problemnuma{\resulta}%
+  \global\edef\problemnumb{\resultb}%
+}
+
+\newcommand{\generatelightcarry}{%
+  \pgfmathrandominteger{\temptensa}{1}{5}%
+  \pgfmathrandominteger{\temponesa}{5}{9}%
+  \pgfmathtruncatemacro{\maxtensb}{8-\temptensa}%
+  \ifnum\maxtensb<1 \def\maxtensb{1}\fi%
+  \pgfmathrandominteger{\temptensb}{1}{\maxtensb}%
+  \pgfmathtruncatemacro{\minonesb}{10-\temponesa}%
+  \pgfmathrandominteger{\temponesb}{\minonesb}{9}%
+  \pgfmathtruncatemacro{\resulta}{\temptensa*10+\temponesa}%
+  \pgfmathtruncatemacro{\resultb}{\temptensb*10+\temponesb}%
+  \global\edef\problemnuma{\resulta}%
+  \global\edef\problemnumb{\resultb}%
+}
+
+\newcommand{\generatelightborrow}{%
+  \pgfmathrandominteger{\temptensa}{3}{9}%
+  \pgfmathrandominteger{\temponesa}{0}{4}%
+  \pgfmathtruncatemacro{\maxtensb}{\temptensa-2}%
+  \ifnum\maxtensb<1 \def\maxtensb{1}\fi%
+  \pgfmathrandominteger{\temptensb}{1}{\maxtensb}%
+  \pgfmathtruncatemacro{\minonesb}{\temponesa+1}%
+  \pgfmathrandominteger{\temponesb}{\minonesb}{9}%
+  \pgfmathtruncatemacro{\resulta}{\temptensa*10+\temponesa}%
+  \pgfmathtruncatemacro{\resultb}{\temptensb*10+\temponesb}%
+  \global\edef\problemnuma{\resulta}%
+  \global\edef\problemnumb{\resultb}%
+}
+
+\newcommand{\generatefullcarry}{%
+  \pgfmathrandominteger{\temptensa}{2}{5}%
+  \pgfmathrandominteger{\temponesa}{5}{9}%
+  \pgfmathtruncatemacro{\mintensb}{10-\temptensa}%
+  \ifnum\mintensb>8 \def\mintensb{8}\fi%
+  \pgfmathtruncatemacro{\maxtensb}{9-\temptensa}%
+  \ifnum\maxtensb<\mintensb \edef\maxtensb{\mintensb}\fi%
+  \pgfmathrandominteger{\temptensb}{\mintensb}{\maxtensb}%
+  \pgfmathtruncatemacro{\minonesb}{10-\temponesa}%
+  \pgfmathrandominteger{\temponesb}{\minonesb}{9}%
+  \pgfmathtruncatemacro{\resulta}{\temptensa*10+\temponesa}%
+  \pgfmathtruncatemacro{\resultb}{\temptensb*10+\temponesb}%
+  \global\edef\problemnuma{\resulta}%
+  \global\edef\problemnumb{\resultb}%
+}
+
+\newcommand{\generatefullborrow}{%
+  \pgfmathrandominteger{\temptensa}{5}{9}%
+  \pgfmathrandominteger{\temponesa}{0}{3}%
+  \pgfmathtruncatemacro{\mintensb}{\temptensa-8}%
+  \ifnum\mintensb<1 \def\mintensb{1}\fi%
+  \pgfmathtruncatemacro{\maxtensb}{\temptensa-1}%
+  \pgfmathrandominteger{\temptensb}{\mintensb}{\maxtensb}%
+  \pgfmathtruncatemacro{\minonesb}{\temponesa+5}%
+  \ifnum\minonesb>9 \def\minonesb{9}\fi%
+  \pgfmathrandominteger{\temponesb}{\minonesb}{9}%
+  \pgfmathtruncatemacro{\resulta}{\temptensa*10+\temponesa}%
+  \pgfmathtruncatemacro{\resultb}{\temptensb*10+\temponesb}%
+  \global\edef\problemnuma{\resulta}%
+  \global\edef\problemnumb{\resultb}%
+}
+
+\newcommand{\problem}[3]{%
+  \noindent
+  \begin{minipage}[t]{1in}%
+    \centering
+    \begin{tabular}[t]{r}%
+      {\large #1}\\[\digitspace]%
+      {\large #2~#3}\\[\linespace]%
+      \hline
+    \end{tabular}%
+  \end{minipage}%
+  \par\vspace{\problemspace}%
+}
+
+\newcommand{\addproblem}[2]{\problem{#1}{+}{#2}}
+\newcommand{\subproblem}[2]{\problem{#1}{-}{#2}}
+
+\newcommand{\generateproblems}[2]{%
+  \foreach \i in {1,...,#2}{#1}%
+}
+
+\newcommand{\worksheet}[3]{%
+  \fancyhead[C]{\large\textbf{Grade 2 - Under 100 (#3)}}%
+  \begin{multicols}{4}
+    \generateproblems{#1\addproblem{\problemnuma}{\problemnumb}}{9}
+    \columnbreak
+    \generateproblems{#1\addproblem{\problemnuma}{\problemnumb}}{9}
+    \columnbreak
+    \generateproblems{#2\subproblem{\problemnuma}{\problemnumb}}{9}
+    \columnbreak
+    \generateproblems{#2\subproblem{\problemnuma}{\problemnumb}}{9}
+  \end{multicols}
+  \newpage
+}
+
+\newcommand{\worksheetnocarry}{\worksheet{\generatenocarryfinal}{\generatenoborrowfinal}{No Carry/Borrow}}
+\newcommand{\worksheetlightcarry}{\worksheet{\generatelightcarry}{\generatelightborrow}{Light Carry/Borrow}}
+\newcommand{\worksheetfullcarry}{\worksheet{\generatefullcarry}{\generatefullborrow}{Full Carry/Borrow}}
+
+\begin{document}
+
+\foreach \n in {1,...,10}{\worksheetnocarry}
+\foreach \n in {1,...,10}{\worksheetlightcarry}
+\foreach \n in {1,...,10}{\worksheetfullcarry}
+
+\end{document}

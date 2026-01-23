@@ -1,0 +1,21 @@
+# LaTeX build artifacts
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.synctex.gz
+*.out
+*.toc
+*.bbl
+*.blg
+*.nav
+*.snm
+*.vrb
+
+# Editor backup files
+*~
+*.bak
+*.swp
+
+# macOS
+.DS_Store

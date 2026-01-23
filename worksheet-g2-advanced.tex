@@ -1,0 +1,197 @@
+\documentclass[12pt]{article}
+\usepackage[letterpaper, margin=0.5in, top=0.8in]{geometry}
+\usepackage{pgfmath}
+\usepackage{pgffor}
+\usepackage{multicol}
+\usepackage{fancyhdr}
+\usepackage[T1]{fontenc}
+\usepackage{sourcecodepro}
+
+\renewcommand{\familydefault}{\ttdefault}
+\setlength{\parindent}{0pt}
+
+% Spacing constants
+\newlength{\columnspace}
+\setlength{\columnspace}{0.5in}
+\newlength{\problemspace}
+\setlength{\problemspace}{0.48in}
+\newlength{\digitspace}
+\setlength{\digitspace}{2pt}
+\newlength{\linespace}
+\setlength{\linespace}{5pt}
+
+\setlength{\columnsep}{\columnspace}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[C]{\large\textbf{Grade 2 - Advanced Addition and Subtraction}}
+\renewcommand{\headrulewidth}{0.4pt}
+\setlength{\headsep}{0.35in}
+
+\pgfmathsetseed{\number\pdfrandomseed}
+
+\newcommand{\problemnuma}{}
+\newcommand{\problemnumb}{}
+\newcommand{\problemnumc}{}
+
+% Pages 1-10: Two-digit under 150 with carrying
+\newcommand{\generatecarryadd}{%
+  \pgfmathrandominteger{\tempa}{25}{89}%
+  \pgfmathtruncatemacro{\maxb}{min(149-\tempa,89)}%
+  \pgfmathtruncatemacro{\minb}{max(15,60-\tempa)}%
+  \ifnum\minb>\maxb \def\minb{15}\fi%
+  \pgfmathrandominteger{\tempb}{\minb}{\maxb}%
+  \global\edef\problemnuma{\tempa}%
+  \global\edef\problemnumb{\tempb}%
+}
+
+\newcommand{\generateborrowsub}{%
+  \pgfmathrandominteger{\tempa}{50}{149}%
+  \pgfmathtruncatemacro{\maxb}{\tempa-10}%
+  \pgfmathtruncatemacro{\minb}{max(15,\tempa-90)}%
+  \ifnum\minb>\maxb \def\minb{15}\fi%
+  \pgfmathrandominteger{\tempb}{\minb}{\maxb}%
+  \global\edef\problemnuma{\tempa}%
+  \global\edef\problemnumb{\tempb}%
+}
+
+% Pages 11-20: Three-digit up to 200 with carry/borrow
+\newcommand{\generatethreedigitadd}{%
+  \pgfmathrandominteger{\tempa}{45}{150}%
+  \pgfmathtruncatemacro{\maxb}{min(199-\tempa,120)}%
+  \pgfmathtruncatemacro{\minb}{max(20,100-\tempa)}%
+  \ifnum\minb>\maxb \def\minb{20}\fi%
+  \pgfmathrandominteger{\tempb}{\minb}{\maxb}%
+  \global\edef\problemnuma{\tempa}%
+  \global\edef\problemnumb{\tempb}%
+}
+
+\newcommand{\generatethreedigitsub}{%
+  \pgfmathrandominteger{\tempa}{100}{199}%
+  \pgfmathtruncatemacro{\maxb}{\tempa-20}%
+  \pgfmathtruncatemacro{\minb}{max(25,\tempa-150)}%
+  \ifnum\minb>\maxb \def\minb{25}\fi%
+  \pgfmathrandominteger{\tempb}{\minb}{\maxb}%
+  \global\edef\problemnuma{\tempa}%
+  \global\edef\problemnumb{\tempb}%
+}
+
+% Pages 21-30: Multi-step problems
+\newcommand{\generatemultistep}{%
+  \pgfmathrandominteger{\tempa}{30}{70}%
+  \pgfmathrandominteger{\tempb}{15}{45}%
+  \pgfmathtruncatemacro{\tempsum}{\tempa+\tempb}%
+  \pgfmathtruncatemacro{\maxc}{\tempsum-10}%
+  \pgfmathrandominteger{\tempc}{10}{\maxc}%
+  \global\edef\problemnuma{\tempa}%
+  \global\edef\problemnumb{\tempb}%
+  \global\edef\problemnumc{\tempc}%
+}
+
+\newcommand{\generatemultistepsub}{%
+  \pgfmathrandominteger{\tempa}{80}{130}%
+  \pgfmathrandominteger{\tempb}{15}{40}%
+  \pgfmathtruncatemacro{\tempdiff}{\tempa-\tempb}%
+  \pgfmathtruncatemacro{\maxc}{min(\tempdiff-10,50)}%
+  \pgfmathrandominteger{\tempc}{10}{\maxc}%
+  \global\edef\problemnuma{\tempa}%
+  \global\edef\problemnumb{\tempb}%
+  \global\edef\problemnumc{\tempc}%
+}
+
+% Single-step problem display
+\newcommand{\problem}[3]{%
+  \noindent
+  \begin{minipage}[t]{1.1in}%
+    \centering
+    \begin{tabular}[t]{r}%
+      {\large #1}\\[\digitspace]%
+      {\large #2~#3}\\[\linespace]%
+      \hline
+    \end{tabular}%
+  \end{minipage}%
+  \par\vspace{\problemspace}%
+}
+
+% Multi-step problem display (a + b - c)
+\newcommand{\multistepproblem}[3]{%
+  \noindent
+  \begin{minipage}[t]{1.1in}%
+    \centering
+    \begin{tabular}[t]{r}%
+      {\large #1}\\[\digitspace]%
+      {\large +~#2}\\[\linespace]%
+      \hline\\[-8pt]%
+      {\large -~#3}\\[\linespace]%
+      \hline
+    \end{tabular}%
+  \end{minipage}%
+  \par\vspace{\problemspace}%
+}
+
+% Multi-step problem display (a - b + c)
+\newcommand{\multistepproblemsub}[3]{%
+  \noindent
+  \begin{minipage}[t]{1.1in}%
+    \centering
+    \begin{tabular}[t]{r}%
+      {\large #1}\\[\digitspace]%
+      {\large -~#2}\\[\linespace]%
+      \hline\\[-8pt]%
+      {\large +~#3}\\[\linespace]%
+      \hline
+    \end{tabular}%
+  \end{minipage}%
+  \par\vspace{\problemspace}%
+}
+
+\newcommand{\addproblem}[2]{\problem{#1}{+}{#2}}
+\newcommand{\subproblem}[2]{\problem{#1}{-}{#2}}
+
+\newcommand{\generateproblems}[2]{%
+  \foreach \i in {1,...,#2}{#1}%
+}
+
+% Worksheet for pages 1-10 (under 150)
+\newcommand{\worksheetunderonefifty}{%
+  \begin{multicols}{2}
+    \generateproblems{\generatecarryadd\addproblem{\problemnuma}{\problemnumb}}{7}
+    \generateproblems{\generateborrowsub\subproblem{\problemnuma}{\problemnumb}}{6}
+    \columnbreak
+    \generateproblems{\generatecarryadd\addproblem{\problemnuma}{\problemnumb}}{6}
+    \generateproblems{\generateborrowsub\subproblem{\problemnuma}{\problemnumb}}{7}
+  \end{multicols}
+  \newpage
+}
+
+% Worksheet for pages 11-20 (up to 200)
+\newcommand{\worksheetuptotwohundred}{%
+  \begin{multicols}{2}
+    \generateproblems{\generatethreedigitadd\addproblem{\problemnuma}{\problemnumb}}{7}
+    \generateproblems{\generatethreedigitsub\subproblem{\problemnuma}{\problemnumb}}{6}
+    \columnbreak
+    \generateproblems{\generatethreedigitadd\addproblem{\problemnuma}{\problemnumb}}{6}
+    \generateproblems{\generatethreedigitsub\subproblem{\problemnuma}{\problemnumb}}{7}
+  \end{multicols}
+  \newpage
+}
+
+% Worksheet for pages 21-30 (multi-step)
+\newcommand{\worksheetmultistep}{%
+  \begin{multicols}{2}
+    \generateproblems{\generatemultistep\multistepproblem{\problemnuma}{\problemnumb}{\problemnumc}}{7}
+    \generateproblems{\generatemultistepsub\multistepproblemsub{\problemnuma}{\problemnumb}{\problemnumc}}{6}
+    \columnbreak
+    \generateproblems{\generatemultistep\multistepproblem{\problemnuma}{\problemnumb}{\problemnumc}}{6}
+    \generateproblems{\generatemultistepsub\multistepproblemsub{\problemnuma}{\problemnumb}{\problemnumc}}{7}
+  \end{multicols}
+  \newpage
+}
+
+\begin{document}
+
+\foreach \n in {1,...,10}{\worksheetunderonefifty}
+\foreach \n in {1,...,10}{\worksheetuptotwohundred}
+\foreach \n in {1,...,10}{\worksheetmultistep}
+
+\end{document}
