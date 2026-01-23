@@ -1,6 +1,6 @@
 # Grade 2 Worksheets
 
-Printable worksheets for Grade 2 students — math practice and phonics word tests.
+Printable worksheets for Grade 2 students - math practice and phonics word tests.
 
 Built with LaTeX for clean, professional output.
 
@@ -15,7 +15,7 @@ Practice words with **ee**, **ea**, and **e-e** (magic e) patterns.
 **Words covered:** been, seed, sheep, sweet, cheese, bean, steam, stream, seat, meat, please, these, complete
 
 **Activities included:**
-- Word Bank & Writing Practice
+- Word Bank and Writing Practice
 - Traditional Dictation
 - Missing Letters
 - Jumbled Letters (Unscramble)
@@ -24,20 +24,20 @@ Practice words with **ee**, **ea**, and **e-e** (magic e) patterns.
 - Error Correction
 - Word Shape Boxes
 
-📄 [Download PDF](worksheet-g2-wordtest-long-e.pdf)
+[Download PDF](worksheet-g2-wordtest-long-e.pdf)
 
 ![Word Test Preview](preview/worksheet-g2-wordtest-long-e.pdf.png)
 
 ---
 
-### 2. Math: Under 100 (Addition & Subtraction)
+### 2. Math: Under 100 (Addition and Subtraction)
 
 Two-digit addition and subtraction problems with three difficulty levels:
-- **No Carry/Borrow** — simple problems
-- **Light Carry/Borrow** — one carry or borrow
-- **Full Carry/Borrow** — more challenging
+- **No Carry/Borrow** - simple problems
+- **Light Carry/Borrow** - one carry or borrow
+- **Full Carry/Borrow** - more challenging
 
-📄 [Download PDF](worksheet-g2-u100.pdf)
+[Download PDF](worksheet-g2-u100.pdf)
 
 ![Under 100 Preview](preview/worksheet-g2-u100.pdf.png)
 
@@ -48,9 +48,9 @@ Two-digit addition and subtraction problems with three difficulty levels:
 Harder problems for students ready for more:
 - Two-digit problems up to 150
 - Three-digit problems up to 200
-- Multi-step problems (e.g., 45 + 30 − 15)
+- Multi-step problems (e.g., 45 + 30 - 15)
 
-📄 [Download PDF](worksheet-g2-advanced.pdf)
+[Download PDF](worksheet-g2-advanced.pdf)
 
 ![Advanced Math Preview](preview/worksheet-g2-advanced.pdf.png)
 
@@ -78,4 +78,4 @@ latexmk -c
 
 ## License
 
-MIT — free to use, modify, and share.
+MIT - free to use, modify, and share.
