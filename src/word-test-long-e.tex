@@ -39,7 +39,7 @@
 \newcommand{\LBox}{\,\fbox{\rule{0pt}{0.13in}\rule{0.12in}{0pt}}\,}
 
 \newcommand{\Tbl}[2]{\renewcommand{\arraystretch}{0.8}\begin{tabular}{@{}p{#1}p{\dimexpr\linewidth-#1-0.05in}@{}}#2\end{tabular}}
-\newcommand{\Row}[1]{\textbf{#1} & \Line{\linewidth}\\[\RowGap]}
+\newcommand{\Row}[1]{\textbf{#1}\hspace{0.08in} & \Line{\linewidth}\\[\RowGap]}
 
 \newcommand{\WordList}{been, seed, sheep, sweet, cheese, bean, steam, stream, seat, meat, please, these, complete}
 
@@ -54,9 +54,9 @@
 \vspace{0.15in}
 \Sec{Write Each Word}
 \begin{multicols}{2}
-\Tbl{1.15in}{\Row{1. been}\Row{2. seed}\Row{3. sheep}\Row{4. sweet}\Row{5. cheese}\Row{6. bean}\Row{7. steam}}
+\Tbl{1.05in}{\Row{1.been}\Row{2.seed}\Row{3.sheep}\Row{4.sweet}\Row{5.cheese}\Row{6.bean}\Row{7.steam}}
 \columnbreak
-\Tbl{1.15in}{\Row{8. stream}\Row{9. seat}\Row{10. meat}\Row{11. please}\Row{12. these}\Row{13. complete}}
+\Tbl{1.05in}{\Row{8.stream}\Row{9.seat}\Row{10.meat}\Row{11.please}\Row{12.these}\Row{13.complete}}
 \end{multicols}
 
 \Sec{Dictation}
