@@ -18,6 +18,7 @@ src/*.fdb_latexmk
 src/*.fls
 src/*.log
 src/*.synctex.gz
+src/*.pdf
 
 # Editor backup files
 *~
