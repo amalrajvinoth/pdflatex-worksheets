@@ -8,7 +8,6 @@
 \usepackage{array}
 \usepackage{xcolor}
 \usepackage{enumitem}
-\usepackage{tabularx}
 
 \renewcommand{\familydefault}{\ttdefault}
 \setlength{\parindent}{0pt}
@@ -18,15 +17,10 @@
 \setlength{\columnsep}{0.15in}
 \raggedcolumns
 
-% Colors
 \definecolor{P}{HTML}{1E40AF}
 \definecolor{L}{HTML}{EFF6FF}
 \definecolor{G}{HTML}{6B7280}
 
-% Row height
-\newlength{\R}\setlength{\R}{0.22in}
-
-% Header
 \pagestyle{fancy}
 \fancyhf{}
 \fancyhead[L]{\textbf{Kids Worksheet}}
@@ -36,123 +30,113 @@
 \setlength{\headheight}{13pt}
 \setlength{\headsep}{0.2in}
 
-% Commands
+\newlength{\RowGap}\setlength{\RowGap}{0.22in}
+
 \newcommand{\Sec}[1]{\vspace{0.06in}\noindent\colorbox{L}{\parbox{\dimexpr\linewidth-2\fboxsep}{\textcolor{P}{\textbf{#1}}}}\par\vspace{0.04in}}
-\newcommand{\N}[1]{\textcolor{G}{\footnotesize #1}\par\vspace{0.02in}}
-\newcommand{\Li}[1]{\rule{#1}{0.4pt}}
-\newcommand{\W}[1]{\textbf{#1} & \Li{\linewidth}\\[\R]}
-\newcommand{\Num}[1]{\textbf{#1.} & \Li{\linewidth}\\[\R]}
-\newcommand{\WT}[1]{\renewcommand{\arraystretch}{0.8}\begin{tabular}{@{}p{0.85in}p{\dimexpr\linewidth-0.9in}@{}}#1\end{tabular}}
-\newcommand{\NT}[1]{\renewcommand{\arraystretch}{0.8}\begin{tabular}{@{}p{0.3in}p{\dimexpr\linewidth-0.35in}@{}}#1\end{tabular}}
-\newcommand{\B}{\,\fbox{\rule{0pt}{0.13in}\rule{0.12in}{0pt}}\,}
+\newcommand{\Note}[1]{\textcolor{G}{\footnotesize #1}\par\vspace{0.02in}}
+\newcommand{\Line}[1]{\rule{#1}{0.4pt}}
 \newcommand{\Blank}{\underline{\hspace{0.18in}}}
-\newcommand{\BX}[2]{\textbf{#1} #2\par\vspace{0.03in}}
-\newcommand{\Words}{been, seed, sheep, sweet, cheese, bean, steam, stream, seat, meat, please, these, complete}
+\newcommand{\LBox}{\,\fbox{\rule{0pt}{0.13in}\rule{0.12in}{0pt}}\,}
+
+\newcommand{\Tbl}[2]{\renewcommand{\arraystretch}{0.8}\begin{tabular}{@{}p{#1}p{\dimexpr\linewidth-#1-0.05in}@{}}#2\end{tabular}}
+\newcommand{\Row}[1]{\textbf{#1} & \Line{\linewidth}\\[\RowGap]}
+
+\newcommand{\WordList}{been, seed, sheep, sweet, cheese, bean, steam, stream, seat, meat, please, these, complete}
 
 \begin{document}
 
-% ==================== PAGE 1 ====================
 \Sec{Word Bank}
+\vspace{0.05in}
 \textcolor{P}{\textbf{EE:}} been, seed, sheep, sweet, cheese\\
 \textcolor{P}{\textbf{EA:}} bean, steam, stream, seat, meat\\
 \textcolor{P}{\textbf{E-E:}} please, these, complete
 
-\vspace{-0.05in}
+\vspace{0.15in}
 \Sec{Write Each Word}
 \begin{multicols}{2}
-\WT{\W{1. been}\W{2. seed}\W{3. sheep}\W{4. sweet}\W{5. cheese}\W{6. bean}\W{7. steam}}
+\Tbl{0.95in}{\Row{1. been}\Row{2. seed}\Row{3. sheep}\Row{4. sweet}\Row{5. cheese}\Row{6. bean}\Row{7. steam}}
 \columnbreak
-\WT{\W{8. stream}\W{9. seat}\W{10. meat}\W{11. please}\W{12. these}\W{13. complete}}
+\Tbl{0.95in}{\Row{8. stream}\Row{9. seat}\Row{10. meat}\Row{11. please}\Row{12. these}\Row{13. complete}}
 \end{multicols}
 
-\Sec{Dictation}\N{Write the word your teacher says.}
+\Sec{Dictation}
+\Note{Write the word your teacher says.}
 \begin{multicols}{2}
-\NT{\Num{1}\Num{2}\Num{3}\Num{4}\Num{5}\Num{6}\Num{7}}
+\Tbl{0.3in}{\Row{1.}\Row{2.}\Row{3.}\Row{4.}\Row{5.}\Row{6.}\Row{7.}}
 \columnbreak
-\NT{\Num{8}\Num{9}\Num{10}\Num{11}\Num{12}\Num{13}}
+\Tbl{0.3in}{\Row{8.}\Row{9.}\Row{10.}\Row{11.}\Row{12.}\Row{13.}}
 \end{multicols}
-\textcolor{G}{\scriptsize Teacher: \Words}
+\textcolor{G}{\scriptsize Teacher: \WordList}
 
-\Sec{Missing Letters}\N{Fill in ee, ea, or e-e.}
+\Sec{Missing Letters}
+\Note{Fill in ee, ea, or e-e.}
 \begin{multicols}{2}
-\renewcommand{\arraystretch}{0.8}
-\begin{tabular}{@{}p{1.1in}p{\dimexpr\linewidth-1.15in}@{}}
-\textbf{b\Blank n (been)} & \Li{\linewidth}\\[\R]
-\textbf{s\Blank d} & \Li{\linewidth}\\[\R]
-\textbf{sh\Blank p} & \Li{\linewidth}\\[\R]
-\textbf{sw\Blank t} & \Li{\linewidth}\\[\R]
-\textbf{ch\Blank se} & \Li{\linewidth}\\[\R]
-\textbf{b\Blank n (bean)} & \Li{\linewidth}\\[\R]
-\textbf{st\Blank m} & \Li{\linewidth}\\[\R]
-\end{tabular}
+\Tbl{1.1in}{\Row{b\Blank n (been)}\Row{s\Blank d}\Row{sh\Blank p}\Row{sw\Blank t}\Row{ch\Blank se}\Row{b\Blank n (bean)}\Row{st\Blank m}}
 \columnbreak
-\begin{tabular}{@{}p{1.1in}p{\dimexpr\linewidth-1.15in}@{}}
-\textbf{str\Blank m} & \Li{\linewidth}\\[\R]
-\textbf{s\Blank t} & \Li{\linewidth}\\[\R]
-\textbf{m\Blank t} & \Li{\linewidth}\\[\R]
-\textbf{pl\Blank se} & \Li{\linewidth}\\[\R]
-\textbf{th\Blank se} & \Li{\linewidth}\\[\R]
-\textbf{compl\Blank te} & \Li{\linewidth}\\[\R]
-\end{tabular}
+\Tbl{1.1in}{\Row{str\Blank m}\Row{s\Blank t}\Row{m\Blank t}\Row{pl\Blank se}\Row{th\Blank se}\Row{compl\Blank te}}
 \end{multicols}
 
 \newpage
-% ==================== PAGE 2 ====================
-\Sec{Jumbled Letters}\N{Unscramble the letters.}
+
+\Sec{Jumbled Letters}
+\Note{Unscramble the letters.}
 \begin{multicols}{2}
-\WT{\W{e e b n}\W{e d e s}\W{e p e s h}\W{e t e w s}\W{e s e e c h}\W{a n e b}\W{a m s t e}}
+\Tbl{0.95in}{\Row{e e b n}\Row{e d e s}\Row{e p e s h}\Row{e t e w s}\Row{e s e e c h}\Row{a n e b}\Row{a m s t e}}
 \columnbreak
-\WT{\W{m e r s t a}\W{a t e s}\W{a m t e}\W{e s l a p e}\W{e e s t h}\W{e t e l p m o c}}
+\Tbl{0.95in}{\Row{m e r s t a}\Row{a t e s}\Row{a m t e}\Row{e s l a p e}\Row{e e s t h}\Row{e t e l p m o c}}
 \end{multicols}
 
-\Sec{Sentence Completion}\N{Fill in the blank.}
+\Sec{Sentence Completion}
+\Note{Fill in the blank.}
 \footnotesize
 \renewcommand{\arraystretch}{1.0}
 \begin{tabular}{@{}r@{\,}p{6.6in}@{}}
-1. & I have \Li{1in} to the park.\\[0.1in]
-2. & I planted a \Li{1in} in the garden.\\[0.1in]
-3. & The \Li{1in} says "baa".\\[0.1in]
-4. & This candy is very \Li{1in}.\\[0.1in]
-5. & I like \Li{1in} on pizza.\\[0.1in]
-6. & I ate a green \Li{1in}.\\[0.1in]
-7. & Hot \Li{1in} rose from the pot.\\[0.1in]
-8. & We crossed the \Li{1in}.\\[0.1in]
-9. & Sit on the \Li{1in}.\\[0.1in]
-10. & The dog ate the \Li{1in}.\\[0.1in]
-11. & \Li{1in} pass the salt.\\[0.1in]
-12. & \Li{1in} are my books.\\[0.1in]
-13. & I will \Li{1in} my work.\\[0.1in]
+1. & I have \Line{1in} to the park.\\[0.1in]
+2. & I planted a \Line{1in} in the garden.\\[0.1in]
+3. & The \Line{1in} says "baa".\\[0.1in]
+4. & This candy is very \Line{1in}.\\[0.1in]
+5. & I like \Line{1in} on pizza.\\[0.1in]
+6. & I ate a green \Line{1in}.\\[0.1in]
+7. & Hot \Line{1in} rose from the pot.\\[0.1in]
+8. & We crossed the \Line{1in}.\\[0.1in]
+9. & Sit on the \Line{1in}.\\[0.1in]
+10. & The dog ate the \Line{1in}.\\[0.1in]
+11. & \Line{1in} pass the salt.\\[0.1in]
+12. & \Line{1in} are my books.\\[0.1in]
+13. & I will \Line{1in} my work.\\[0.1in]
 \end{tabular}
 \normalsize
 
-\Sec{Error Correction}\N{Write the correct word.}
+\Sec{Error Correction}
+\Note{Write the correct word.}
 \footnotesize
 \begin{multicols}{2}
 \renewcommand{\arraystretch}{1.0}
 \begin{tabular}{@{}p{1.6in}p{0.9in}@{}}
-I have \textbf{ben} to the zoo. & \Li{0.85in}\\[0.08in]
-I planted a \textbf{seede}. & \Li{0.85in}\\[0.08in]
-The \textbf{shep} is fluffy. & \Li{0.85in}\\[0.08in]
-This cake is \textbf{swet}. & \Li{0.85in}\\[0.08in]
-I like \textbf{chese}. & \Li{0.85in}\\[0.08in]
-I ate a \textbf{beean}. & \Li{0.85in}\\[0.08in]
-Hot \textbf{steem} rose. & \Li{0.85in}\\[0.08in]
+I have \textbf{ben} to the zoo. & \Line{0.85in}\\[0.08in]
+I planted a \textbf{seede}. & \Line{0.85in}\\[0.08in]
+The \textbf{shep} is fluffy. & \Line{0.85in}\\[0.08in]
+This cake is \textbf{swet}. & \Line{0.85in}\\[0.08in]
+I like \textbf{chese}. & \Line{0.85in}\\[0.08in]
+I ate a \textbf{beean}. & \Line{0.85in}\\[0.08in]
+Hot \textbf{steem} rose. & \Line{0.85in}\\[0.08in]
 \end{tabular}
 \columnbreak
 \begin{tabular}{@{}p{1.6in}p{0.9in}@{}}
-We crossed a \textbf{strem}. & \Li{0.85in}\\[0.08in]
-Sit on the \textbf{seet}. & \Li{0.85in}\\[0.08in]
-Dog ate the \textbf{meet}. & \Li{0.85in}\\[0.08in]
-\textbf{Plase} help me. & \Li{0.85in}\\[0.08in]
-\textbf{Thees} are toys. & \Li{0.85in}\\[0.08in]
-I will \textbf{complet} it. & \Li{0.85in}\\[0.08in]
+We crossed a \textbf{strem}. & \Line{0.85in}\\[0.08in]
+Sit on the \textbf{seet}. & \Line{0.85in}\\[0.08in]
+Dog ate the \textbf{meet}. & \Line{0.85in}\\[0.08in]
+\textbf{Plase} help me. & \Line{0.85in}\\[0.08in]
+\textbf{Thees} are toys. & \Line{0.85in}\\[0.08in]
+I will \textbf{complet} it. & \Line{0.85in}\\[0.08in]
 \end{tabular}
 \end{multicols}
 \normalsize
 
 \newpage
-% ==================== PAGE 3 ====================
-\Sec{Multiple Choice}\N{Circle the correct spelling.}
+
+\Sec{Multiple Choice}
+\Note{Circle the correct spelling.}
 \footnotesize
 \begin{multicols}{2}
 \begin{enumerate}
@@ -173,59 +157,57 @@ I will \textbf{complet} it. & \Li{0.85in}\\[0.08in]
 \end{multicols}
 \normalsize
 
-\Sec{Meaning Match}\N{Write the word that matches.}
+\Sec{Meaning Match}
+\Note{Write the word that matches.}
 \footnotesize
 \begin{multicols}{2}
 \renewcommand{\arraystretch}{1.05}
 \begin{tabular}{@{}p{1.8in}p{0.9in}@{}}
-I have visited a place & \Li{0.85in}\\[0.08in]
-A tiny plant starter & \Li{0.85in}\\[0.08in]
-Animal that says "baa" & \Li{0.85in}\\[0.08in]
-Tastes like sugar & \Li{0.85in}\\[0.08in]
-Made from milk & \Li{0.85in}\\[0.08in]
-A small green vegetable & \Li{0.85in}\\[0.08in]
-Hot air from water & \Li{0.85in}\\[0.08in]
+I have visited a place & \Line{0.85in}\\[0.08in]
+A tiny plant starter & \Line{0.85in}\\[0.08in]
+Animal that says "baa" & \Line{0.85in}\\[0.08in]
+Tastes like sugar & \Line{0.85in}\\[0.08in]
+Made from milk & \Line{0.85in}\\[0.08in]
+A small green vegetable & \Line{0.85in}\\[0.08in]
+Hot air from water & \Line{0.85in}\\[0.08in]
 \end{tabular}
 \columnbreak
 \begin{tabular}{@{}p{1.8in}p{0.9in}@{}}
-A small river & \Li{0.85in}\\[0.08in]
-What you sit on & \Li{0.85in}\\[0.08in]
-Food from an animal & \Li{0.85in}\\[0.08in]
-A polite word & \Li{0.85in}\\[0.08in]
-Points to things nearby & \Li{0.85in}\\[0.08in]
-To finish something & \Li{0.85in}\\[0.08in]
+A small river & \Line{0.85in}\\[0.08in]
+What you sit on & \Line{0.85in}\\[0.08in]
+Food from an animal & \Line{0.85in}\\[0.08in]
+A polite word & \Line{0.85in}\\[0.08in]
+Points to things nearby & \Line{0.85in}\\[0.08in]
+To finish something & \Line{0.85in}\\[0.08in]
 \end{tabular}
 \end{multicols}
 \normalsize
 
-\Sec{Word Shapes}\N{Write each word in the boxes.}
+\newcommand{\LBoxWord}[2]{\textbf{#1} #2\par\vspace{0.03in}}
+\Sec{Word Shapes}
+\Note{Write each word in the boxes.}
 \begin{multicols}{2}
-\BX{been}{\B\B\B\B}
-\BX{seed}{\B\B\B\B}
-\BX{sheep}{\B\B\B\B\B}
-\BX{sweet}{\B\B\B\B\B}
-\BX{cheese}{\B\B\B\B\B\B}
-\BX{bean}{\B\B\B\B}
-\BX{steam}{\B\B\B\B\B}
+\LBoxWord{been}{\LBox\LBox\LBox\LBox}
+\LBoxWord{seed}{\LBox\LBox\LBox\LBox}
+\LBoxWord{sheep}{\LBox\LBox\LBox\LBox\LBox}
+\LBoxWord{sweet}{\LBox\LBox\LBox\LBox\LBox}
+\LBoxWord{cheese}{\LBox\LBox\LBox\LBox\LBox\LBox}
+\LBoxWord{bean}{\LBox\LBox\LBox\LBox}
+\LBoxWord{steam}{\LBox\LBox\LBox\LBox\LBox}
 \columnbreak
-\BX{stream}{\B\B\B\B\B\B}
-\BX{seat}{\B\B\B\B}
-\BX{meat}{\B\B\B\B}
-\BX{please}{\B\B\B\B\B\B}
-\BX{these}{\B\B\B\B\B}
-\BX{complete}{\B\B\B\B\B\B\B\B}
+\LBoxWord{stream}{\LBox\LBox\LBox\LBox\LBox\LBox}
+\LBoxWord{seat}{\LBox\LBox\LBox\LBox}
+\LBoxWord{meat}{\LBox\LBox\LBox\LBox}
+\LBoxWord{please}{\LBox\LBox\LBox\LBox\LBox\LBox}
+\LBoxWord{these}{\LBox\LBox\LBox\LBox\LBox}
+\LBoxWord{complete}{\LBox\LBox\LBox\LBox\LBox\LBox\LBox\LBox}
 \end{multicols}
 
-\Sec{Draw and Label}\N{Pick 4 words: sheep, cheese, bean, seat, meat, seed.}
+\newcommand{\DrawBox}{\fbox{\rule{0pt}{0.7in}\rule{0.9in}{0pt}}\par\vspace{0.03in}\Line{0.9in}}
+\Sec{Draw and Label}
+\Note{Pick 4 words: sheep, cheese, bean, seat, meat, seed.}
 \begin{multicols}{4}
-\centering
-\fbox{\rule{0pt}{0.7in}\rule{0.9in}{0pt}}\par\vspace{0.03in}\Li{0.9in}
-\columnbreak
-\fbox{\rule{0pt}{0.7in}\rule{0.9in}{0pt}}\par\vspace{0.03in}\Li{0.9in}
-\columnbreak
-\fbox{\rule{0pt}{0.7in}\rule{0.9in}{0pt}}\par\vspace{0.03in}\Li{0.9in}
-\columnbreak
-\fbox{\rule{0pt}{0.7in}\rule{0.9in}{0pt}}\par\vspace{0.03in}\Li{0.9in}
+\centering\DrawBox\columnbreak\DrawBox\columnbreak\DrawBox\columnbreak\DrawBox
 \end{multicols}
 
 \end{document}
