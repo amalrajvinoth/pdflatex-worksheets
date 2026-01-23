@@ -1,6 +1,6 @@
-# Grade 2 Worksheets
+# Kids Worksheets
 
-Printable worksheets for Grade 2 students - math practice and phonics word tests.
+Printable worksheets for kids - math practice and phonics word tests.
 
 Built with LaTeX for clean, professional output.
 
