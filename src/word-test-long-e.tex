@@ -31,20 +31,29 @@
 \setlength{\headsep}{0.2in}
 
 \newlength{\RowGap}\setlength{\RowGap}{0.22in}
+\newcommand{\WordList}{been, seed, sheep, sweet, cheese, bean, steam, stream, seat, meat, please, these, complete}
 
 \newcommand{\Sec}[1]{\vspace{0.06in}\noindent\colorbox{L}{\parbox{\dimexpr\linewidth-2\fboxsep}{\textcolor{P}{\textbf{#1}}}}\par\vspace{0.04in}}
 \newcommand{\Note}[1]{\textcolor{G}{\footnotesize #1}\par\vspace{0.02in}}
-\newcommand{\Line}[1]{\rule{#1}{0.4pt}}
+\newcommand{\Li}[1]{\rule{#1}{0.4pt}}
 \newcommand{\Blank}{\underline{\hspace{0.18in}}}
-\newcommand{\LBox}{\,\fbox{\rule{0pt}{0.13in}\rule{0.12in}{0pt}}\,}
+\newcommand{\B}{\,\fbox{\rule{0pt}{0.13in}\rule{0.12in}{0pt}}\,}
 
 \newcommand{\Tbl}[2]{\renewcommand{\arraystretch}{0.8}\begin{tabular}{@{}p{#1}p{\dimexpr\linewidth-#1-0.05in}@{}}#2\end{tabular}}
-\newcommand{\Row}[1]{\textbf{#1}\ & \Line{\linewidth}\\[\RowGap]}
+\newcommand{\Row}[1]{\textbf{#1}\ & \Li{\linewidth}\\[\RowGap]}
 
-\newcommand{\WordList}{been, seed, sheep, sweet, cheese, bean, steam, stream, seat, meat, please, these, complete}
+\newcommand{\SentTbl}[1]{\renewcommand{\arraystretch}{1.0}\begin{tabular}{@{}r@{\,}p{6.6in}@{}}#1\end{tabular}}
+\newcommand{\Sent}[2]{#1. & #2 \Li{1in}.\\[0.1in]}
 
-\newcommand{\Err}[1]{#1 & \Line{0.85in}\\[0.08in]}
 \newcommand{\ErrTbl}[1]{\renewcommand{\arraystretch}{1.0}\begin{tabular}{@{}p{2in}p{0.9in}@{}}#1\end{tabular}}
+\newcommand{\Err}[1]{#1 & \Li{0.85in}\\[0.08in]}
+
+\newcommand{\MatchTbl}[1]{\renewcommand{\arraystretch}{1.05}\begin{tabular}{@{}p{1.8in}p{0.9in}@{}}#1\end{tabular}}
+\newcommand{\Match}[1]{#1 & \Li{0.85in}\\[0.08in]}
+
+\newcommand{\BW}[2]{\textbf{#1} #2\par\vspace{0.03in}}
+\newcommand{\Bx}[1]{\foreach \i in {1,...,#1}{\B}}
+\newcommand{\DrawBox}{\fbox{\rule{0pt}{0.7in}\rule{0.9in}{0pt}}\par\vspace{0.03in}\Li{0.9in}}
 
 \begin{document}
 
@@ -92,22 +101,21 @@
 \Sec{Sentence Completion}
 \Note{Fill in the blank.}
 \footnotesize
-\renewcommand{\arraystretch}{1.0}
-\begin{tabular}{@{}r@{\,}p{6.6in}@{}}
-1. & I have \Line{1in} to the park.\\[0.1in]
-2. & I planted a \Line{1in} in the garden.\\[0.1in]
-3. & The \Line{1in} says "baa".\\[0.1in]
-4. & This candy is very \Line{1in}.\\[0.1in]
-5. & I like \Line{1in} on pizza.\\[0.1in]
-6. & I ate a green \Line{1in}.\\[0.1in]
-7. & Hot \Line{1in} rose from the pot.\\[0.1in]
-8. & We crossed the \Line{1in}.\\[0.1in]
-9. & Sit on the \Line{1in}.\\[0.1in]
-10. & The dog ate the \Line{1in}.\\[0.1in]
-11. & \Line{1in} pass the salt.\\[0.1in]
-12. & \Line{1in} are my books.\\[0.1in]
-13. & I will \Line{1in} my work.\\[0.1in]
-\end{tabular}
+\SentTbl{
+\Sent{1}{I have \Li{1in} to the park}
+\Sent{2}{I planted a \Li{1in} in the garden}
+\Sent{3}{The \Li{1in} says "baa"}
+\Sent{4}{This candy is very \Li{1in}}
+\Sent{5}{I like \Li{1in} on pizza}
+\Sent{6}{I ate a green \Li{1in}}
+\Sent{7}{Hot \Li{1in} rose from the pot}
+\Sent{8}{We crossed the \Li{1in}}
+\Sent{9}{Sit on the \Li{1in}}
+\Sent{10}{The dog ate the \Li{1in}}
+\Sent{11}{\Li{1in} pass the salt}
+\Sent{12}{\Li{1in} are my books}
+\Sent{13}{I will \Li{1in} my work}
+}
 \normalsize
 
 \Sec{Error Correction}
@@ -163,49 +171,46 @@
 \Note{Write the word that matches.}
 \footnotesize
 \begin{multicols}{2}
-\renewcommand{\arraystretch}{1.05}
-\begin{tabular}{@{}p{1.8in}p{0.9in}@{}}
-I have visited a place & \Line{0.85in}\\[0.08in]
-A tiny plant starter & \Line{0.85in}\\[0.08in]
-Animal that says "baa" & \Line{0.85in}\\[0.08in]
-Tastes like sugar & \Line{0.85in}\\[0.08in]
-Made from milk & \Line{0.85in}\\[0.08in]
-A small green vegetable & \Line{0.85in}\\[0.08in]
-Hot air from water & \Line{0.85in}\\[0.08in]
-\end{tabular}
+\MatchTbl{
+\Match{I have visited a place}
+\Match{A tiny plant starter}
+\Match{Animal that says "baa"}
+\Match{Tastes like sugar}
+\Match{Made from milk}
+\Match{A small green vegetable}
+\Match{Hot air from water}
+}
 \columnbreak
-\begin{tabular}{@{}p{1.8in}p{0.9in}@{}}
-A small river & \Line{0.85in}\\[0.08in]
-What you sit on & \Line{0.85in}\\[0.08in]
-Food from an animal & \Line{0.85in}\\[0.08in]
-A polite word & \Line{0.85in}\\[0.08in]
-Points to things nearby & \Line{0.85in}\\[0.08in]
-To finish something & \Line{0.85in}\\[0.08in]
-\end{tabular}
+\MatchTbl{
+\Match{A small river}
+\Match{What you sit on}
+\Match{Food from an animal}
+\Match{A polite word}
+\Match{Points to things nearby}
+\Match{To finish something}
+}
 \end{multicols}
 \normalsize
 
-\newcommand{\LBoxWord}[2]{\textbf{#1} #2\par\vspace{0.03in}}
 \Sec{Word Shapes}
 \Note{Write each word in the boxes.}
 \begin{multicols}{2}
-\LBoxWord{been}{\LBox\LBox\LBox\LBox}
-\LBoxWord{seed}{\LBox\LBox\LBox\LBox}
-\LBoxWord{sheep}{\LBox\LBox\LBox\LBox\LBox}
-\LBoxWord{sweet}{\LBox\LBox\LBox\LBox\LBox}
-\LBoxWord{cheese}{\LBox\LBox\LBox\LBox\LBox\LBox}
-\LBoxWord{bean}{\LBox\LBox\LBox\LBox}
-\LBoxWord{steam}{\LBox\LBox\LBox\LBox\LBox}
+\BW{been}{\B\B\B\B}
+\BW{seed}{\B\B\B\B}
+\BW{sheep}{\B\B\B\B\B}
+\BW{sweet}{\B\B\B\B\B}
+\BW{cheese}{\B\B\B\B\B\B}
+\BW{bean}{\B\B\B\B}
+\BW{steam}{\B\B\B\B\B}
 \columnbreak
-\LBoxWord{stream}{\LBox\LBox\LBox\LBox\LBox\LBox}
-\LBoxWord{seat}{\LBox\LBox\LBox\LBox}
-\LBoxWord{meat}{\LBox\LBox\LBox\LBox}
-\LBoxWord{please}{\LBox\LBox\LBox\LBox\LBox\LBox}
-\LBoxWord{these}{\LBox\LBox\LBox\LBox\LBox}
-\LBoxWord{complete}{\LBox\LBox\LBox\LBox\LBox\LBox\LBox\LBox}
+\BW{stream}{\B\B\B\B\B\B}
+\BW{seat}{\B\B\B\B}
+\BW{meat}{\B\B\B\B}
+\BW{please}{\B\B\B\B\B\B}
+\BW{these}{\B\B\B\B\B}
+\BW{complete}{\B\B\B\B\B\B\B\B}
 \end{multicols}
 
-\newcommand{\DrawBox}{\fbox{\rule{0pt}{0.7in}\rule{0.9in}{0pt}}\par\vspace{0.03in}\Line{0.9in}}
 \Sec{Draw and Label}
 \Note{Pick 4 words: sheep, cheese, bean, seat, meat, seed.}
 \begin{multicols}{4}
