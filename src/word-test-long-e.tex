@@ -43,6 +43,9 @@
 
 \newcommand{\WordList}{been, seed, sheep, sweet, cheese, bean, steam, stream, seat, meat, please, these, complete}
 
+\newcommand{\Err}[1]{#1 & \Line{0.85in}\\[0.08in]}
+\newcommand{\ErrTbl}[1]{\renewcommand{\arraystretch}{1.0}\begin{tabular}{@{}p{2in}p{0.9in}@{}}#1\end{tabular}}
+
 \begin{document}
 
 \Sec{Word Bank}
@@ -73,7 +76,7 @@
 \Note{Fill in ee, ea, or e-e.}
 \begin{multicols}{2}
 \Tbl{1.1in}{\Row{b\Blank n (been)}\Row{s\Blank d}\Row{sh\Blank p}\Row{sw\Blank t}\Row{ch\Blank se}\Row{b\Blank n (bean)}\Row{st\Blank m}}
-\Tbl{1.1in}{\Row{str\Blank m}\Row{s\Blank t}\Row{m\Blank t}\Row{pl\Blank se}\Row{th\Blank se}\Row{compl\Blank te}}
+\;\;\Tbl{1.1in}{\Row{str\Blank m}\Row{s\Blank t}\Row{m\Blank t}\Row{pl\Blank se}\Row{th\Blank se}\Row{compl\Blank te}}
 \end{multicols}
 
 \newpage
@@ -111,25 +114,24 @@
 \Note{Write the correct word.}
 \footnotesize
 \begin{multicols}{2}
-\renewcommand{\arraystretch}{1.0}
-\begin{tabular}{@{}p{1.6in}p{0.9in}@{}}
-I have \textbf{ben} to the zoo. & \Line{0.85in}\\[0.08in]
-I planted a \textbf{seede}. & \Line{0.85in}\\[0.08in]
-The \textbf{shep} is fluffy. & \Line{0.85in}\\[0.08in]
-This cake is \textbf{swet}. & \Line{0.85in}\\[0.08in]
-I like \textbf{chese}. & \Line{0.85in}\\[0.08in]
-I ate a \textbf{beean}. & \Line{0.85in}\\[0.08in]
-Hot \textbf{steem} rose. & \Line{0.85in}\\[0.08in]
-\end{tabular}
+\ErrTbl{
+\Err{I have \textbf{ben} to the zoo.}
+\Err{I planted a \textbf{seede}.}
+\Err{The \textbf{shep} is fluffy.}
+\Err{This cake is \textbf{swet}.}
+\Err{I like \textbf{chese}.}
+\Err{I ate a \textbf{beean}.}
+\Err{Hot \textbf{steem} rose.}
+}
 \columnbreak
-\begin{tabular}{@{}p{1.6in}p{0.9in}@{}}
-We crossed a \textbf{strem}. & \Line{0.85in}\\[0.08in]
-Sit on the \textbf{seet}. & \Line{0.85in}\\[0.08in]
-Dog ate the \textbf{meet}. & \Line{0.85in}\\[0.08in]
-\textbf{Plase} help me. & \Line{0.85in}\\[0.08in]
-\textbf{Thees} are toys. & \Line{0.85in}\\[0.08in]
-I will \textbf{complet} it. & \Line{0.85in}\\[0.08in]
-\end{tabular}
+\ErrTbl{
+\Err{We crossed a \textbf{strem}.}
+\Err{Sit on the \textbf{seet}.}
+\Err{Dog ate the \textbf{meet}.}
+\Err{\textbf{Plase} help me.}
+\Err{\textbf{Thees} are toys.}
+\Err{I will \textbf{complet} it.}
+}
 \end{multicols}
 \normalsize
 
