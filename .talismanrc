@@ -1,0 +1,4 @@
+fileignoreconfig:
+- filename: src/math-under-100.tex
+  checksum: 1505fb2415e122b5ef348ca82aca3d284ce1cb26fe3b61212bd545877007ca1b
+version: "1.0"

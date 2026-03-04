@@ -2,6 +2,7 @@
 \usepackage[letterpaper, margin=0.5in, top=0.8in]{geometry}
 \usepackage{pgfmath}
 \usepackage{pgffor}
+\usepackage{pgfkeys}
 \usepackage{multicol}
 \usepackage{fancyhdr}
 \usepackage[T1]{fontenc}
@@ -10,16 +11,10 @@
 \renewcommand{\familydefault}{\ttdefault}
 \setlength{\parindent}{0pt}
 
-% Spacing constants
-\newlength{\columnspace}
-\setlength{\columnspace}{0.4in}
-\newlength{\problemspace}
-\setlength{\problemspace}{0.55in}
-\newlength{\digitspace}
-\setlength{\digitspace}{3pt}
-\newlength{\linespace}
-\setlength{\linespace}{6pt}
-
+\newlength{\columnspace}\setlength{\columnspace}{0.4in}
+\newlength{\problemspace}\setlength{\problemspace}{0.55in}
+\newlength{\digitspace}\setlength{\digitspace}{3pt}
+\newlength{\linespace}\setlength{\linespace}{6pt}
 \setlength{\columnsep}{\columnspace}
 
 \pagestyle{fancy}
@@ -30,97 +25,72 @@
 
 \pgfmathsetseed{\number\pdfrandomseed}
 
+\pgfkeys{
+  /prob/.is family, /prob,
+  tens min/.initial=1, tens max/.initial=4,
+  ones min/.initial=0, ones max/.initial=9,
+  tens2 min/.initial=1, tens2 max/.initial=4,
+  ones2 min/.initial=0, ones2 max/.initial=9,
+  carry/.initial=false,
+  borrow/.initial=false,
+}
+
 \newcommand{\problemnuma}{}
 \newcommand{\problemnumb}{}
 
-\newcommand{\generatenocarryfinal}{%
-  \pgfmathrandominteger{\temptensa}{1}{4}%
-  \pgfmathrandominteger{\temponesa}{0}{9}%
-  \pgfmathtruncatemacro{\maxtensb}{min(9-\temptensa,4)}%
-  \ifnum\maxtensb<1 \def\maxtensb{1}\fi%
-  \pgfmathrandominteger{\temptensb}{1}{\maxtensb}%
-  \pgfmathtruncatemacro{\maxonesb}{9-\temponesa}%
-  \pgfmathrandominteger{\temponesb}{0}{\maxonesb}%
-  \pgfmathtruncatemacro{\resulta}{\temptensa*10+\temponesa}%
-  \pgfmathtruncatemacro{\resultb}{\temptensb*10+\temponesb}%
-  \global\edef\problemnuma{\resulta}%
-  \global\edef\problemnumb{\resultb}%
-}
-
-\newcommand{\generatenoborrowfinal}{%
-  \pgfmathrandominteger{\temptensa}{2}{9}%
-  \pgfmathrandominteger{\temponesa}{0}{9}%
-  \pgfmathtruncatemacro{\maxtensb}{\temptensa-1}%
-  \ifnum\maxtensb<1 \def\maxtensb{1}\fi%
-  \pgfmathrandominteger{\temptensb}{1}{\maxtensb}%
-  \pgfmathtruncatemacro{\maxonesb}{\temponesa}%
-  \ifnum\maxonesb<1%
-    \def\temponesb{0}%
+\newcommand{\genAdd}[1][]{%
+  \pgfkeys{/prob, tens min=1, tens max=4, ones min=0, ones max=9, tens2 min=1, tens2 max=4, ones2 min=0, ones2 max=9, carry=false, #1}%
+  \pgfkeysgetvalue{/prob/carry}{\carryval}%
+  \pgfkeysgetvalue{/prob/tens min}{\tmin}\pgfkeysgetvalue{/prob/tens max}{\tmax}%
+  \pgfkeysgetvalue{/prob/ones min}{\omin}\pgfkeysgetvalue{/prob/ones max}{\omax}%
+  \pgfmathrandominteger{\ta}{\tmin}{\tmax}%
+  \pgfmathrandominteger{\oa}{\omin}{\omax}%
+  \if\carryval true%
+    \pgfmathtruncatemacro{\mintb}{max(1,10-\ta-1)}%
+    \pgfmathtruncatemacro{\maxtb}{min(9-\ta,8)}%
+    \ifnum\maxtb<\mintb\edef\maxtb{\mintb}\fi%
+    \pgfmathrandominteger{\tb}{\mintb}{\maxtb}%
+    \pgfmathtruncatemacro{\minob}{10-\oa}%
+    \pgfmathrandominteger{\ob}{\minob}{9}%
   \else%
-    \pgfmathrandominteger{\temponesb}{0}{\maxonesb}%
+    \pgfmathtruncatemacro{\maxtb}{9-\ta}%
+    \ifnum\maxtb<1\def\maxtb{1}\fi%
+    \pgfmathrandominteger{\tb}{1}{\maxtb}%
+    \pgfmathtruncatemacro{\maxob}{9-\oa}%
+    \pgfmathrandominteger{\ob}{0}{\maxob}%
   \fi%
-  \pgfmathtruncatemacro{\resulta}{\temptensa*10+\temponesa}%
-  \pgfmathtruncatemacro{\resultb}{\temptensb*10+\temponesb}%
+  \pgfmathtruncatemacro{\resulta}{\ta*10+\oa}%
+  \pgfmathtruncatemacro{\resultb}{\tb*10+\ob}%
   \global\edef\problemnuma{\resulta}%
   \global\edef\problemnumb{\resultb}%
 }
 
-\newcommand{\generatelightcarry}{%
-  \pgfmathrandominteger{\temptensa}{1}{5}%
-  \pgfmathrandominteger{\temponesa}{5}{9}%
-  \pgfmathtruncatemacro{\maxtensb}{8-\temptensa}%
-  \ifnum\maxtensb<1 \def\maxtensb{1}\fi%
-  \pgfmathrandominteger{\temptensb}{1}{\maxtensb}%
-  \pgfmathtruncatemacro{\minonesb}{10-\temponesa}%
-  \pgfmathrandominteger{\temponesb}{\minonesb}{9}%
-  \pgfmathtruncatemacro{\resulta}{\temptensa*10+\temponesa}%
-  \pgfmathtruncatemacro{\resultb}{\temptensb*10+\temponesb}%
-  \global\edef\problemnuma{\resulta}%
-  \global\edef\problemnumb{\resultb}%
-}
-
-\newcommand{\generatelightborrow}{%
-  \pgfmathrandominteger{\temptensa}{3}{9}%
-  \pgfmathrandominteger{\temponesa}{0}{4}%
-  \pgfmathtruncatemacro{\maxtensb}{\temptensa-2}%
-  \ifnum\maxtensb<1 \def\maxtensb{1}\fi%
-  \pgfmathrandominteger{\temptensb}{1}{\maxtensb}%
-  \pgfmathtruncatemacro{\minonesb}{\temponesa+1}%
-  \pgfmathrandominteger{\temponesb}{\minonesb}{9}%
-  \pgfmathtruncatemacro{\resulta}{\temptensa*10+\temponesa}%
-  \pgfmathtruncatemacro{\resultb}{\temptensb*10+\temponesb}%
-  \global\edef\problemnuma{\resulta}%
-  \global\edef\problemnumb{\resultb}%
-}
-
-\newcommand{\generatefullcarry}{%
-  \pgfmathrandominteger{\temptensa}{2}{5}%
-  \pgfmathrandominteger{\temponesa}{5}{9}%
-  \pgfmathtruncatemacro{\mintensb}{10-\temptensa}%
-  \ifnum\mintensb>8 \def\mintensb{8}\fi%
-  \pgfmathtruncatemacro{\maxtensb}{9-\temptensa}%
-  \ifnum\maxtensb<\mintensb \edef\maxtensb{\mintensb}\fi%
-  \pgfmathrandominteger{\temptensb}{\mintensb}{\maxtensb}%
-  \pgfmathtruncatemacro{\minonesb}{10-\temponesa}%
-  \pgfmathrandominteger{\temponesb}{\minonesb}{9}%
-  \pgfmathtruncatemacro{\resulta}{\temptensa*10+\temponesa}%
-  \pgfmathtruncatemacro{\resultb}{\temptensb*10+\temponesb}%
-  \global\edef\problemnuma{\resulta}%
-  \global\edef\problemnumb{\resultb}%
-}
-
-\newcommand{\generatefullborrow}{%
-  \pgfmathrandominteger{\temptensa}{5}{9}%
-  \pgfmathrandominteger{\temponesa}{0}{3}%
-  \pgfmathtruncatemacro{\mintensb}{\temptensa-8}%
-  \ifnum\mintensb<1 \def\mintensb{1}\fi%
-  \pgfmathtruncatemacro{\maxtensb}{\temptensa-1}%
-  \pgfmathrandominteger{\temptensb}{\mintensb}{\maxtensb}%
-  \pgfmathtruncatemacro{\minonesb}{\temponesa+5}%
-  \ifnum\minonesb>9 \def\minonesb{9}\fi%
-  \pgfmathrandominteger{\temponesb}{\minonesb}{9}%
-  \pgfmathtruncatemacro{\resulta}{\temptensa*10+\temponesa}%
-  \pgfmathtruncatemacro{\resultb}{\temptensb*10+\temponesb}%
+\newcommand{\genSub}[1][]{%
+  \pgfkeys{/prob, tens min=2, tens max=9, ones min=0, ones max=9, borrow=false, #1}%
+  \pgfkeysgetvalue{/prob/borrow}{\borrowval}%
+  \pgfkeysgetvalue{/prob/tens min}{\tmin}\pgfkeysgetvalue{/prob/tens max}{\tmax}%
+  \pgfkeysgetvalue{/prob/ones min}{\omin}\pgfkeysgetvalue{/prob/ones max}{\omax}%
+  \pgfmathrandominteger{\ta}{\tmin}{\tmax}%
+  \pgfmathrandominteger{\oa}{\omin}{\omax}%
+  \if\borrowval true%
+    \pgfmathtruncatemacro{\maxtb}{\ta-2}%
+    \ifnum\maxtb<1\def\maxtb{1}\fi%
+    \pgfmathrandominteger{\tb}{1}{\maxtb}%
+    \pgfmathtruncatemacro{\minob}{\oa+1}%
+    \ifnum\minob>9\def\minob{9}\fi%
+    \pgfmathrandominteger{\ob}{\minob}{9}%
+  \else%
+    \pgfmathtruncatemacro{\maxtb}{\ta-1}%
+    \ifnum\maxtb<1\def\maxtb{1}\fi%
+    \pgfmathrandominteger{\tb}{1}{\maxtb}%
+    \ifnum\oa<1%
+      \def\ob{0}%
+    \else%
+      \pgfmathrandominteger{\ob}{0}{\oa}%
+    \fi%
+  \fi%
+  \pgfmathtruncatemacro{\resulta}{\ta*10+\oa}%
+  \pgfmathtruncatemacro{\resultb}{\tb*10+\ob}%
   \global\edef\problemnuma{\resulta}%
   \global\edef\problemnumb{\resultb}%
 }
@@ -138,35 +108,51 @@
   \par\vspace{\problemspace}%
 }
 
-\newcommand{\addproblem}[2]{\problem{#1}{+}{#2}}
-\newcommand{\subproblem}[2]{\problem{#1}{-}{#2}}
+\newcommand{\addP}[2]{\problem{#1}{+}{#2}}
+\newcommand{\subP}[2]{\problem{#1}{-}{#2}}
 
-\newcommand{\generateproblems}[2]{%
-  \foreach \i in {1,...,#2}{#1}%
-}
+\newcommand{\genProblems}[2]{\foreach \i in {1,...,#2}{#1}}
 
-\newcommand{\worksheet}[3]{%
-  \fancyhead[C]{\large\textbf{Kids Math - Under 100 (#3)}}%
+\newcommand{\worksheet}[4]{%
+  \fancyhead[C]{\large\textbf{Kids Math - Under 100 (#4)}}%
   \begin{multicols}{4}
-    \generateproblems{#1\addproblem{\problemnuma}{\problemnumb}}{9}
+    \genProblems{#1\addP{\problemnuma}{\problemnumb}}{9}
     \columnbreak
-    \generateproblems{#1\addproblem{\problemnuma}{\problemnumb}}{9}
+    \genProblems{#1\addP{\problemnuma}{\problemnumb}}{9}
     \columnbreak
-    \generateproblems{#2\subproblem{\problemnuma}{\problemnumb}}{9}
+    \genProblems{#2\subP{\problemnuma}{\problemnumb}}{9}
     \columnbreak
-    \generateproblems{#2\subproblem{\problemnuma}{\problemnumb}}{9}
+    \genProblems{#2\subP{\problemnuma}{\problemnumb}}{9}
   \end{multicols}
+  \foreach \p in {1,...,#3}{\newpage
+    \begin{multicols}{4}
+      \genProblems{#1\addP{\problemnuma}{\problemnumb}}{9}
+      \columnbreak
+      \genProblems{#1\addP{\problemnuma}{\problemnumb}}{9}
+      \columnbreak
+      \genProblems{#2\subP{\problemnuma}{\problemnumb}}{9}
+      \columnbreak
+      \genProblems{#2\subP{\problemnuma}{\problemnumb}}{9}
+    \end{multicols}
+  }
   \newpage
 }
 
-\newcommand{\worksheetnocarry}{\worksheet{\generatenocarryfinal}{\generatenoborrowfinal}{No Carry/Borrow}}
-\newcommand{\worksheetlightcarry}{\worksheet{\generatelightcarry}{\generatelightborrow}{Light Carry/Borrow}}
-\newcommand{\worksheetfullcarry}{\worksheet{\generatefullcarry}{\generatefullborrow}{Full Carry/Borrow}}
-
 \begin{document}
 
-\foreach \n in {1,...,10}{\worksheetnocarry}
-\foreach \n in {1,...,10}{\worksheetlightcarry}
-\foreach \n in {1,...,10}{\worksheetfullcarry}
+\worksheet
+  {\genAdd[tens min=1, tens max=4, ones min=0, ones max=9, carry=false]}
+  {\genSub[tens min=2, tens max=9, ones min=0, ones max=9, borrow=false]}
+  {9}{No Carry/Borrow}
+
+\worksheet
+  {\genAdd[tens min=1, tens max=5, ones min=5, ones max=9, carry=true]}
+  {\genSub[tens min=3, tens max=9, ones min=0, ones max=4, borrow=true]}
+  {9}{Light Carry/Borrow}
+
+\worksheet
+  {\genAdd[tens min=2, tens max=5, ones min=5, ones max=9, carry=true]}
+  {\genSub[tens min=5, tens max=9, ones min=0, ones max=3, borrow=true]}
+  {9}{Full Carry/Borrow}
 
 \end{document}

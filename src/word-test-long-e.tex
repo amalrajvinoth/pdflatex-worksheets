@@ -53,7 +53,7 @@
 
 \newcommand{\BW}[2]{\textbf{#1} #2\par\vspace{0.03in}}
 \newcommand{\Bx}[1]{\foreach \i in {1,...,#1}{\B}}
-\newcommand{\DrawBox}{\fbox{\rule{0pt}{0.7in}\rule{0.9in}{0pt}}\par\vspace{0.03in}\Li{0.9in}}
+\newcommand{\DrawBox}{\fbox{\rule{0pt}{0.7in}\rule{0.9in}{0pt}}\vspace{0.03in}\Li{0.9in}}
 
 \begin{document}
 
@@ -213,8 +213,14 @@
 
 \Sec{Draw and Label}
 \Note{Pick 4 words: sheep, cheese, bean, seat, meat, seed.}
-\begin{multicols}{4}
-\centering\DrawBox\columnbreak\DrawBox\columnbreak\DrawBox\columnbreak\DrawBox
+\begin{multicols}{2}
+\DrawBox
+\DrawBox
+\DrawBox
+\columnbreak
+\DrawBox
+\DrawBox
+\DrawBox
 \end{multicols}
 
 \end{document}
