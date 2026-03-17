@@ -12,6 +12,9 @@
 *.snm
 *.vrb
 
+# Generated build config (build-math.sh)
+src/math-build.cfg
+
 # Build artifacts in src folder
 src/*.aux
 src/*.fdb_latexmk

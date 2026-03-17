@@ -1,0 +1,20 @@
+\documentclass[12pt]{article}
+\usepackage[letterpaper, margin=0.5in, top=0.8in]{geometry}
+\usepackage{pgfmath}
+\usepackage{pgffor}
+\usepackage{pgfkeys}
+\usepackage{multicol}
+\usepackage{fancyhdr}
+\usepackage[T1]{fontenc}
+\usepackage{sourcecodepro}
+
+\renewcommand{\familydefault}{\ttdefault}
+\setlength{\parindent}{0pt}
+
+\input{math-under-100-common}
+
+\begin{document}
+
+\MakeMathSheet{add}{tens min=1, tens max=5, ones min=5, ones max=9, carry=1}{}{5}{Light Carry}
+
+\end{document}
