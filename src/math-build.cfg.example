@@ -1,0 +1,22 @@
+% Copy to math-build.cfg and edit, or let build-math.sh generate it.
+% The file must contain a single line: \MakeMathSheet{type}{addopts}{subopts}{pages}{title}
+%
+% Example (addition only, 2 pages, light carry):
+\MakeMathSheet{add}{tens min=1, tens max=5, ones min=5, ones max=9, carry=1}{}{2}{Light Carry}
+%
+% Example (subtraction only, 2 pages, light borrow):
+% \MakeMathSheet{sub}{}{tens min=3, tens max=9, ones min=0, ones max=4, borrow=1}{2}{Light Borrow}
+%
+% Example (subtraction only, 2 pages, full borrow):
+% \MakeMathSheet{sub}{}{tens min=5, tens max=9, ones min=0, ones max=3, borrow=1}{2}{Full Borrow}
+%
+% Example (mixed add/sub, 5 pages):
+% \MakeMathSheet{mixed}{tens min=1, tens max=5, ones min=5, ones max=9, carry=1}{tens min=3, tens max=9, ones min=0, ones max=4, borrow=1}{5}{Light Mixed}
+%
+% Presets (build-math.sh uses these):
+% no_carry:    tens min=1, tens max=4, ones min=0, ones max=9, carry=0
+% light_carry: tens min=1, tens max=5, ones min=5, ones max=9, carry=1
+% full_carry:  tens min=2, tens max=5, ones min=5, ones max=9, carry=1
+% no_borrow:    tens min=2, tens max=9, ones min=0, ones max=9, borrow=0
+% light_borrow: tens min=3, tens max=9, ones min=0, ones max=4, borrow=1
+% full_borrow:  tens min=5, tens max=9, ones min=0, ones max=3, borrow=1

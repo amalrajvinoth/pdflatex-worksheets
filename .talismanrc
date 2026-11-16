@@ -1,4 +1,6 @@
 fileignoreconfig:
 - filename: src/math-under-100.tex
   checksum: 1505fb2415e122b5ef348ca82aca3d284ce1cb26fe3b61212bd545877007ca1b
+- filename: src/math-under-100-common.tex
+  checksum: fd0f3f6c6013437991449ba0f3ad1dcad5f3f78ec641f9b1abdac300d24f5e32
 version: "1.0"
